@@ -1,0 +1,76 @@
+﻿@model Inspinia_MVC5.Models.Usuario
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SAD Sistemas Legados</title>
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet">
+    <link href="~/Fonts/font-awesome/css/font-awesome.css" rel="stylesheet">
+    <link href="~/Content/animate.css" rel="stylesheet">
+    <link href="~/Content/style.css" rel="stylesheet">
+    <style>
+        .img {
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-image: url("/Images/wallpaper2.jpg");
+            min-height: 100%;
+        }
+
+        .logo-name {
+            letter-spacing: 0px;
+            text-shadow: black 0.1em 0.1em 0.2em;
+        }
+    </style>
+</head>
+<body class="img">
+    <div class="text-center animated fadeInDown">
+        <h2 class="logo-name" style="font-size:60px">SAD</h2>
+        <h3 class="logo-name" style="font-size:40px;">Cadastro de conta  Pro</h3>
+    </div>
+    <div class="middle-box text-center loginscreen   animated fadeInDown">
+        <div>
+
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
+                <p style="color:red; font-size:medium; background-color:black" class="w3-left"><b>@ViewData["Mensagem"]</b></p>
+                <div class="m-t" role="form" action="#">
+                    <div class="form-group">
+                        @Html.EditorFor(model => model.NOME, new { htmlAttributes = new { @class = "form-control", placeholder = "Nome" } })
+                        @Html.ValidationMessageFor(model => model.NOME, "", new { @class = "w3-text-red" })
+                    </div>
+                    <div class="form-group">
+                        @Html.EditorFor(model => model.SOBRENOME, new { htmlAttributes = new { @class = "form-control", placeholder = "Sobrenome" } })
+                        @Html.ValidationMessageFor(model => model.SOBRENOME, "", new { @class = "w3-text-red" })
+                    </div>
+                    <div class="form-group">
+                        @Html.EditorFor(model => model.EMAIL, new { htmlAttributes = new { @class = "form-control", placeholder = "Email" } })
+                        @Html.ValidationMessageFor(model => model.EMAIL, "", new { @class = "w3-text-red" })
+                    </div>
+                    <div class="form-group">
+                        @Html.EditorFor(model => model.SENHA, new { htmlAttributes = new { @class = "form-control", placeholder = "Senha" } })
+                        @Html.ValidationMessageFor(model => model.SENHA, "", new { @class = "w3-text-red" })
+                    </div>
+                    <div class="form-group">
+                        @Html.EditorFor(model => model.CONFSENHA, new { htmlAttributes = new { @class = "form-control", placeholder = "Confirmação de senha" } })
+                        @Html.ValidationMessageFor(model => model.CONFSENHA, "", new { @class = "w3-text-red" })
+                    </div>
+                    <div class="form-group">
+                        <div class="checkbox"><label style="color:white"> <input type="checkbox" required><i></i> Concordo com os  <a href="~/Images/TERMOS_DE_SERVICO.pdf" target="_blank" style="text-shadow: black 0.1em 0.1em 0.2em;"><b>termos e política</b></a></label></div>
+                    </div>
+                    <input type="submit" value="Cadastrar" class="btn btn-primary block full-width m-b" />
+                </div>
+                <a class="btn btn-sm btn-white btn-block w3-button" href="@Url.Action("Index", "Home")" style="font-size:15px">Cancelar</a>
+            }
+        </div>
+        <br />
+        <span style="color:white">
+            <strong>Copyright</strong> Filipe Costa Batista Boy &copy; 2018
+        </span>
+    </div>
+</body>
+</html>

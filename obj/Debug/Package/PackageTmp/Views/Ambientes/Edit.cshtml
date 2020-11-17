@@ -1,0 +1,373 @@
+﻿@model Inspinia_MVC5.Models.Ambiente
+
+@{
+    ViewBag.Title = "Edit";
+
+}
+
+<div class="row wrapper border-bottom white-bg page-heading">
+    <ul class="progress-indicator">
+        <li class="completed"> <span class="bubble"></span> Importância para o negócio </li>
+        <li class="completed"> <span class="bubble"></span> Qualidade Técnica </li>
+        <li class="completed"> <span class="bubble"></span> Qualidade do Ambiente </li>
+    </ul>
+</div>
+<div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-sm-12 text-center">
+        <h2>Avaliação da qualidade do ambiente do sistema</h2>
+    </div>
+</div>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <div class="ibox-content">
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.ID_AVALIACAO)
+        @Html.HiddenFor(model => model.ID_AVAMBIENTE)
+        <div class="form-group">
+            <h3><b>Questão 1: </b>O fornecedor ainda existe?</h3>
+            <div class="col-md-10">
+                <div class="radio i-checks">
+                    @if (Model.RESPOSTA1 == 0)
+                    {
+                        <label>
+                            <input type="radio" value="10" name="RESPOSTA1" required> <i></i> Sim
+                            &emsp;<input type="radio" value="0" name="RESPOSTA1" checked> <i></i> Não
+                        </label>
+                    }
+                    else
+                    {
+                        <label>
+                            <input type="radio" value="10" name="RESPOSTA1" required checked> <i></i> Sim
+                            &emsp;<input type="radio" value="0" name="RESPOSTA1"> <i></i> Não
+                        </label>
+                    }
+
+                </div>
+            </div>
+        </div>
+        <br />
+        <hr />
+        <div class="form-group">
+            <h3><b>Questão 2: </b>O fornecedor é financeiramente estável e deve continuar existindo?</h3>
+            <div class="col-md-10">
+                <div class="radio i-checks">
+                    @if (Model.RESPOSTA2 == 0)
+                    {
+                        <label>
+                            <input type="radio" value="10" name="RESPOSTA2" required> <i></i> Sim
+                            &emsp;<input type="radio" value="0" name="RESPOSTA2" checked> <i></i> Não
+                        </label>
+                    }
+                    else
+                    {
+                        <label>
+                            <input type="radio" value="10" name="RESPOSTA2" required checked> <i></i> Sim
+                            &emsp;<input type="radio" value="0" name="RESPOSTA2"> <i></i> Não
+                        </label>
+                    }
+                </div>
+            </div>
+        </div>
+        <br />
+        <hr />
+        <div class="form-group">
+            <h3><b>Questão 3: </b> Na falta do fornecedor, existe alguém para manter os sistemas?</h3>
+            <div class="col-md-10">
+                <div class="radio i-checks">
+                    @if (Model.RESPOSTA3 == 0)
+                    {
+                        <label>
+                            <input type="radio" value="10" name="RESPOSTA3" required> <i></i> Sim
+                            &emsp;<input type="radio" value="0" name="RESPOSTA3" checked> <i></i> Não
+                        </label>
+                    }
+                    else
+                    {
+                        <label>
+                            <input type="radio" value="10" name="RESPOSTA3" required checked> <i></i> Sim
+                            &emsp;<input type="radio" value="0" name="RESPOSTA3"> <i></i> Não
+                        </label>
+                    }
+
+                </div>
+            </div>
+        </div>
+        <br />
+        <hr />
+        <div class="form-group">
+            <h3><b>Questão 4: </b>O hardware tem uma grande taxa de falhas reportadas?</h3>
+            <div class="col-md-10">
+                <div class="radio i-checks">
+                    @if (Model.RESPOSTA4 == 0)
+                    {
+                        <label>
+                            <input type="radio" value="0" name="RESPOSTA4" required checked> <i></i> Sim
+                            &emsp;<input type="radio" value="10" name="RESPOSTA4"> <i></i> Não
+                        </label>
+                    }
+                    else
+                    {
+                        <label>
+                            <input type="radio" value="0" name="RESPOSTA4" required> <i></i> Sim
+                            &emsp;<input type="radio" value="10" name="RESPOSTA4" checked> <i></i> Não
+                        </label>
+                    }
+                </div>
+            </div>
+        </div>
+        <br />
+        <hr />
+        <div class="form-group">
+            <h3><b>Questão 5: </b> O software de apoio trava e força o reinício do sistema?</h3>
+            <div class="col-md-10">
+                <div class="radio i-checks">
+                    @if (Model.RESPOSTA5 == 0)
+                    {
+                        <label>
+                            <input type="radio" value="0" name="RESPOSTA5" required checked> <i></i> Sim
+                            &emsp;<input type="radio" value="10" name="RESPOSTA5"> <i></i> Não
+
+                        </label>
+                    }
+                    else
+                    {
+                        <label>
+                            <input type="radio" value="0" name="RESPOSTA5" required> <i></i> Sim
+                            &emsp;<input type="radio" value="10" name="RESPOSTA5" checked> <i></i> Não
+
+                        </label>
+                    }
+                </div>
+            </div>
+        </div>
+        <br />
+        <hr />
+        <div class="form-group">
+            <h3><b>Questão 6: </b>Quantos anos têm o hardware?</h3>
+            <div class="col-md-10">
+                <div class="radio i-checks">
+                    @if (Model.RESPOSTA6 == 0)
+                    {
+                        <label>
+                            <input type="radio" value="10" name="RESPOSTA6" required> <i></i> Menos de 10 anos
+                            &emsp;<input type="radio" value="5" name="RESPOSTA6"> <i></i> Entre 10 e 20 anos
+                            &emsp;<input type="radio" value="0" name="RESPOSTA6" checked> <i></i> Mais de 20 anos
+                        </label>
+                    }
+                    else if (Model.RESPOSTA6 == 5)
+                    {
+                        <label>
+                            <input type="radio" value="10" name="RESPOSTA6" required> <i></i> Menos de 10 anos
+                            &emsp;<input type="radio" value="5" name="RESPOSTA6" checked> <i></i> Entre 10 e 20 anos
+                            &emsp;<input type="radio" value="0" name="RESPOSTA6"> <i></i> Mais de 20 anos
+                        </label>
+                    }
+                    else if (Model.RESPOSTA6 == 10)
+                    {
+                        <label>
+                            <input type="radio" value="10" name="RESPOSTA6" required checked> <i></i> Menos de 10 anos
+                            &emsp;<input type="radio" value="5" name="RESPOSTA6"> <i></i> Entre 10 e 20 anos
+                            &emsp;<input type="radio" value="0" name="RESPOSTA6"> <i></i> Mais de 20 anos
+                        </label>
+                    }
+
+                </div>
+            </div>
+        </div>
+        <br />
+        <hr />
+        <div class="form-group">
+            <h3><b>Questão 7: </b>Quantos anos têm o software?</h3>
+            <div class="col-md-10">
+                <div class="radio i-checks">
+                    @if (Model.RESPOSTA7 == 0)
+                    {
+                        <label>
+                            <input type="radio" value="10" name="RESPOSTA7" required> <i></i> Menos de 10 anos
+                            &emsp;<input type="radio" value="5" name="RESPOSTA7"> <i></i> Entre 10 e 20 anos
+                            &emsp;<input type="radio" value="0" name="RESPOSTA7" checked> <i></i> Mais de 20 anos
+                        </label>
+                    }
+                    else if (Model.RESPOSTA7 == 5)
+                    {
+                        <label>
+                            <input type="radio" value="10" name="RESPOSTA7" required> <i></i> Menos de 10 anos
+                            &emsp;<input type="radio" value="5" name="RESPOSTA7" checked> <i></i> Entre 10 e 20 anos
+                            &emsp;<input type="radio" value="0" name="RESPOSTA7"> <i></i> Mais de 20 anos
+                        </label>
+                    }
+                    else if (Model.RESPOSTA7 == 10)
+                    {
+                        <label>
+                            <input type="radio" value="10" name="RESPOSTA7" required checked> <i></i> Menos de 10 anos
+                            &emsp;<input type="radio" value="5" name="RESPOSTA7"> <i></i> Entre 10 e 20 anos
+                            &emsp;<input type="radio" value="0" name="RESPOSTA7"> <i></i> Mais de 20 anos
+                        </label>
+                    }
+                </div>
+            </div>
+        </div>
+        <br />
+        <hr />
+        <div class="form-group">
+            <h3><b>Questão 8: </b>O desempenho do hardware é adequado?</h3>
+            <div class="col-md-10">
+                <div class="radio i-checks">
+                    @if (Model.RESPOSTA8 == 0)
+                    {
+                        <label>
+                            <input type="radio" value="10" name="RESPOSTA8" required> <i></i> Sim
+                            &emsp;<input type="radio" value="0" name="RESPOSTA8" checked> <i></i> Não
+                        </label>
+                    }
+                    else
+                    {
+                        <label>
+                            <input type="radio" value="10" name="RESPOSTA8" required checked> <i></i> Sim
+                            &emsp;<input type="radio" value="0" name="RESPOSTA8"> <i></i> Não
+                        </label>
+                    }
+                </div>
+            </div>
+        </div>
+        <br />
+        <hr />
+        <div class="form-group">
+            <h3><b>Questão 9: </b>Os problemas de desempenho têm um efeito significativo sobre os usuários do sistema?</h3>
+            <div class="col-md-10">
+                <div class="radio i-checks">
+                    @if (Model.RESPOSTA9 == 0)
+                    {
+                        <label>
+                            <input type="radio" value="0" name="RESPOSTA9" required checked> <i></i> Sim
+                            &emsp;<input type="radio" value="10" name="RESPOSTA9"> <i></i> Não
+                        </label>
+                    }
+                    else
+                    {
+                        <label>
+                            <input type="radio" value="0" name="RESPOSTA9" required> <i></i> Sim
+                            &emsp;<input type="radio" value="10" name="RESPOSTA9" checked> <i></i> Não
+                        </label>
+                    }
+
+                </div>
+            </div>
+        </div>
+        <br />
+        <hr />
+        <div class="form-group">
+            <h3><b>Questão 10: </b>É necessário algum apoio local para hardware e software?</h3>
+            <div class="col-md-10">
+                <div class="radio i-checks">
+                    @if (Model.RESPOSTA10 == 0)
+                    {
+                        <label>
+                            <input type="radio" value="0" name="RESPOSTA10" required checked> <i></i> Sim
+                            &emsp;<input type="radio" value="10" name="RESPOSTA10"> <i></i> Não
+                        </label>
+                    }
+                    else
+                    {
+                        <label>
+                            <input type="radio" value="0" name="RESPOSTA10" required> <i></i> Sim
+                            &emsp;<input type="radio" value="10" name="RESPOSTA10" checked> <i></i> Não
+                        </label>
+                    }
+                </div>
+            </div>
+        </div>
+        <br />
+        <hr />
+        <div class="form-group">
+            <h3><b>Questão 11: </b> Existem custos com manutenção de hardware e licenças de software de apoio?</h3>
+            <div class="col-md-10">
+                <div class="radio i-checks">
+                    @if (Model.RESPOSTA11 == 0)
+                    {
+                        <label>
+                            <input type="radio" value="0" name="RESPOSTA11" required checked> <i></i> Sim
+                            &emsp;<input type="radio" value="10" name="RESPOSTA11"> <i></i> Não
+                        </label>
+                    }
+                    else
+                    {
+                        <label>
+                            <input type="radio" value="0" name="RESPOSTA11" required> <i></i> Sim
+                            &emsp;<input type="radio" value="10" name="RESPOSTA11" checked> <i></i> Não
+                        </label>
+                    }
+
+                </div>
+            </div>
+        </div>
+        <br />
+        <hr />
+        <div class="form-group">
+            <h3><b>Questão 12: </b>Existem problemas de interface do sistema com outros sistemas?</h3>
+            <div class="col-md-10">
+                <div class="radio i-checks">
+                    @if (Model.RESPOSTA12 == 0)
+                    {
+                        <label>
+                            <input type="radio" value="0" name="RESPOSTA12" required checked> <i></i> Sim
+                            &emsp;<input type="radio" value="10" name="RESPOSTA12"> <i></i> Não
+                        </label>
+                    }
+                    else
+                    {
+                        <label>
+                            <input type="radio" value="0" name="RESPOSTA12" required> <i></i> Sim
+                            &emsp;<input type="radio" value="10" name="RESPOSTA12" checked> <i></i> Não
+                        </label>
+                    }
+
+                </div>
+            </div>
+        </div>
+        <br />
+        <div class="form-group">
+            <div class="hr-line-dashed"></div>
+            <div class="form-group">
+                <div class="col-sm-12 col-sm-offset-2">
+                    @Html.ActionLink("Sair", "../Avaliacaos/IndexUsuario", null, new { @class = "btn btn-white" }) &emsp;
+                    <button class="btn btn-primary " type="submit">Alterar e ver resultado</button>
+                </div>
+            </div>
+            <br />
+            <br />
+            <br />
+            <br />
+        </div>
+    </div>
+}
+@section Styles {
+    @Styles.Render("~/Content/plugins/iCheck/iCheckStyles")
+
+}
+
+@section Scripts {
+    @Scripts.Render("~/plugins/wizardSteps")
+    @Scripts.Render("~/plugins/iCheck")
+    @Scripts.Render("~/plugins/validate")
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+
+            $('.i-checks').iCheck({
+                checkboxClass: 'icheckbox_square-green',
+                radioClass: 'iradio_square-green',
+            });
+
+        });
+
+    </script>
+}
+
+
+
+
+
+

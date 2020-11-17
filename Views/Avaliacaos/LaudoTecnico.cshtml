@@ -1,0 +1,120 @@
+﻿@model Inspinia_MVC5.Models.Avaliacao
+
+@{
+    ViewBag.Title = "LaudoTecnico";
+
+}
+
+<div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-sm-4">
+        <h2>Laudo</h2>
+    </div>
+    <div class="col-sm-8">
+        <div class="title-action">
+            <input type="button" value="Voltar" class="btn btn-white w3-left" onClick="history.go(-1)">&emsp;
+            <input type="button" value="Imprimir" class="btn btn-primary w3-right" onClick="window.print()" />
+        </div>
+    </div>
+</div>
+
+<div class="wrapper wrapper-content">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="ibox float-e-margins">
+                <div class="ibox-content text-center p-md">
+                    <h2>
+                        Para este sistema, a melhor estratégia de evolução a ser seguida é<br />
+                        <span class="text-navy"><b>@ViewData["estrategia"].ToString()</b></span>
+                    </h2>
+                    <h4 class="text-justify">
+                        A empresa possui @ViewData["Q1R1"].ToString() anos de mercado, possui @ViewData["Q1R2"].ToString() colaboradores e o seu faturamento anual de
+                        @ViewData["Q1R3"].ToString(). A empresa possui um sistema instalado, que é utilizado @ViewData["Q1R4"].ToString()  por uma @ViewData["Q1R5"].ToString()  parte dos
+                        funcionários. O sistema @ViewData["Q1R6"].ToString()  o suporte necessário para o negócio, as suas informações de saídas  @ViewData["Q1R9"].ToString()  confiáveis
+                        e úteis para o negócio e  @ViewData["Q1R12"].ToString()  tecnologia para futuras necessidades do negócio. Além disso, ele @ViewData["Q1R7"].ToString() que
+                        um colaborador se desvie de suas tarefas pra resolver problemas, o custo de manutenção é @ViewData["Q1R10"].ToString() e a empresa @ViewData["Q1R11"].ToString() outro sistema dentro da
+                        empresa que possua as mesmas funções.
+                        <br />
+                    </h4>
+                    <h4 class="text-justify">
+                        Em relação a parte técnica do sistema, o código fonte é @ViewData["Q2R1"].ToString() de compreender, as estruturas de
+                        controle possuem um nível @ViewData["Q2R2"].ToString() de complexidade,  as variáveis @ViewData["Q2R3"].ToString() nomes
+                        que refletem sua função e a linguagem de programação @ViewData["Q2R8"].ToString() @ViewData["Q2R9"].ToString() utilizada
+                        para desenvolver novos softwares. A documentação @ViewData["Q2R4"].ToString() atualizada com as modificações efetuadas após a
+                        implantação e o modelo de dados @ViewData["Q2R5"].ToString() explícito. Os dados utilizados pelo sistema @ViewData["Q2R6"].ToString() atuais e consistentes e o
+                        desempenho da aplicação @ViewData["Q2R7"].ToString() adequado. O sistema @ViewData["Q2R11"].ToString() um controle das versões desenvolvidas,
+                        @ViewData["Q2R12"].ToString() informações sobre os testes executados. A empresa @ViewData["Q2R15"].ToString() colaboradores com experiência no sistema
+                        e @ViewData["Q2R14"].ToString() pessoas com habilidades para manter a aplicação na falta do
+                        fornecedor. A demanda de solicitações de mudança é considerada @ViewData["Q2R16"].ToString(), a quantidade de interfaces
+                        é @ViewData["Q2R17"].ToString() e o sistema em questão possui um volume @ViewData["Q2R18"].ToString() de dados. Outros fatores
+                        importantes a serem considerados é  que a taxa de disponibilidade do sistema @ViewData["Q2R19"] a necessidade do negócio e o nível de customização que é @ViewData["Q2R20"].
+                        <br />
+                    </h4>
+                    <h4 class="text-justify">
+                        Do ponto de vista do ambiente no qual o sistema está inserido, é importante ressaltar que o fornecedor do sistema
+                        @ViewData["Q3R1"].ToString() existe e @ViewData["Q3R2"].ToString() financeiramente estável. Na falta dele, @ViewData["Q3R3"].ToString()
+                        alguém para manter o sistema. O hardware @ViewData["Q3R4"].ToString() uma grande taxa de falhas e o software de apoio
+                        @ViewData["Q3R5"].ToString() travamentos do sistema . O Hardware possui @ViewData["Q3R6"].ToString()
+                        de utilização e o software @ViewData["Q3R7"].ToString(). O desempenho do hardware @ViewData["Q3R8"].ToString() adequado e @ViewData["Q3R10"].ToString() de algum apoio
+                        local. Os custos com licenças de softwares de apoio e a manutenção do hardware são considerados @ViewData["Q3R11"].ToString().
+                        <br />
+                    </h4>
+                    <h4 class="text-justify">
+                        Desta forma, a melhor estratégia de evolução a ser seguida com o sistema é @ViewData["estrategia"].ToString(), pois
+                        a importância para o negócio é @ViewData["nota_neg"].ToString() e a qualidade geral do sistema é @ViewData["nota_qua"].ToString().
+                        @if (ViewData["estrategia"].ToString().Equals("descartar ou manter o sistema") & ViewData["Q2R16"].ToString().Equals("baixa"))
+                        {
+                            <span>
+                                O sistema tem baixa importância para o negócio mas possui uma qualidade aceitável. Não possui grande quantidade solicitações
+                                de alteração, então deve ser considerada a possibilidade de manter o sistema.
+                            </span>
+                        }
+                        else if (ViewData["estrategia"].ToString().Equals("descartar ou manter o sistema") & ViewData["Q2R16"].ToString() != "baixa")
+                        {
+                            <span>
+                                O sistema tem baixa importância para o negócio mas possui uma qualidade aceitável. Como possui uma grande quantidade solicitações
+                                de alteração, logo deve ser considerada a possibilidade de descartar o sistema.
+                            </span>
+                        }
+                        else if (ViewData["estrategia"].ToString().Equals("melhorar ou substituir o sistema"))
+                        {
+                            <span>
+                                O sistema possui uma importância considerável para o negócio mas possui uma qualidade abaixo do esperado. Para decidir entre
+                                melhorar ou substituir, deve-se analisar as melhorias necessárias e se o atual sistema oferece suporte para tais melhorias. Para contrapor à esta análise,
+                                deve-se verificar a existência de softwares prontos no mercado que atenda as necessidades. Substituir por um sistema novo
+                                personalizado pode ser ideal mas terá um alto custo.
+                            </span>
+                        }
+                        else if (ViewData["estrategia"].ToString().Equals("manter o sistema") & ViewData["Q1R12"].ToString().Equals("não possui"))
+                        {
+                            <span>
+                                O sistema possui uma importância considerável para o negócio e possui uma qualidade aceitável. Porém o sistema
+                                atual não possui tecnologias para futuras necessidades do negócio. Com isso, deve-se efetuar um estudo do
+                                que o negócio irá precisar nos próximos anos e se é possível só melhorar o sistema atual.
+                            </span>
+                        }
+                        else if (ViewData["estrategia"].ToString().Equals("manter o sistema") & ViewData["Q1R12"].ToString().Equals("possui"))
+                        {
+                            <span>
+                                O sistema possui uma importância considerável para o negócio e possui uma qualidade aceitável até para futuras necessidades.
+                            </span>
+                        }
+                        else if (ViewData["estrategia"].ToString().Equals("descartar o sistema"))
+                        {
+                            <span>
+                                O sistema possui pouca importância para o negócio e possui uma qualidade abaixa. Neste caso, a melhor estratégia a ser seguida
+                                seja descartar o sistema.
+                            </span>
+                        }
+                    </h4>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+

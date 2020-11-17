@@ -1,0 +1,81 @@
+﻿@model Inspinia_MVC5.Models.Feedback
+
+@{
+    ViewBag.Title = "Create";
+
+}
+<div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-sm-12">
+        <h2>Dê o seu feedback sobre a avaliação realizada</h2>
+    </div>
+</div>
+@if (ViewData["Mensagem"] != null)
+{
+    <h4 class="text-danger">&emsp;@ViewData["Mensagem"]</h4>
+}
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <div class="ibox-content">
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.ID_AVALIACAO)
+        @Html.HiddenFor(model => model.RESULTADO)
+        <div class="form-group">
+            <h3>Se você já decidiu qual estratégia adotará, nos conte qual é!</h3>
+            <div class="col-md-10">
+                <div class="radio i-checks">
+                    <label>
+                        <input type="radio" value="Descartar o sistema" name="ESTRATEGIA_ADOTADA"> <i></i> Descartar o sistema
+                        &emsp;<input type="radio" value="Manter do mesmo jeito" name="ESTRATEGIA_ADOTADA"> <i></i> Manter do mesmo jeito
+                        &emsp;<input type="radio" value="Melhorar o sistema" name="ESTRATEGIA_ADOTADA"> <i></i>Melhorar o sistema
+                        &emsp;<input type="radio" value="Substituir o sistema" name="ESTRATEGIA_ADOTADA"> <i></i> Substituir o sistema
+                    </label>
+                </div>
+            </div>
+        </div>
+        <br />
+        <hr />
+        <div class="form-group" style="height:150px">
+            <h3>Comente sobre a contribuição desta ferramenta para a sua decisão.</h3>
+            <div class="col-md-10">
+                <label>
+                    <textarea name="COMENTARIO" rows="10" cols="70" placeholder="Escreva seu comentário..."></textarea>
+                </label>
+            </div>
+        </div>
+        <br />
+        <div class="form-group">
+            <div class="form-group">
+                <div class="col-sm-12 col-sm-offset-2">
+                    @Html.ActionLink("Cancelar", "../Avaliacaos/IndexUsuario", null, new { @class = "btn btn-white" }) &emsp;
+                    <button class="btn btn-primary" type="submit" name="Submit" value="continuar">Enviar Feedback</button>
+                </div>
+                <br />
+                <br />
+                <br />
+                <br />
+            </div>
+        </div>
+    </div>
+}
+
+@section Styles {
+    @Styles.Render("~/Content/plugins/iCheck/iCheckStyles")
+}
+
+@section Scripts {
+    @Scripts.Render("~/plugins/wizardSteps")
+    @Scripts.Render("~/plugins/iCheck")
+    @Scripts.Render("~/plugins/validate")
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('.i-checks').iCheck({
+                checkboxClass: 'icheckbox_square-green',
+                radioClass: 'iradio_square-green',
+            });
+        });
+    </script>
+}
+
+
+

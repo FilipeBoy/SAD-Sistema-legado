@@ -1,0 +1,128 @@
+﻿@model Inspinia_MVC5.Models.Feedback
+
+@{
+    ViewBag.Title = "CreateComplementar";
+
+}
+<div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-sm-12">
+        <h2>Gostaríamos de saber um pouco mais sobre o que o levou a tomar essa decisão.</h2>
+    </div>
+</div>
+@if (ViewData["Mensagem"] != null)
+{
+    <h4 class="text-danger">&emsp;@ViewData["Mensagem"]</h4>
+}
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <div class="ibox-content">
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.ID_AVALIACAO)
+        @Html.HiddenFor(model => model.RESULTADO)
+        @Html.HiddenFor(model => model.ID_FEEDBACK)
+        @Html.HiddenFor(model => model.RESULTADO)
+        @Html.HiddenFor(model => model.ESTRATEGIA_ADOTADA)
+        @Html.HiddenFor(model => model.COMENTARIO)
+        <div class="form-group">
+            <h3>Não concordou com alguma das notas?</h3>
+            <div class="col-md-12">
+                <div class="radio i-checks">
+                    <label>
+                        <input type="radio" value="1" name="RESPOSTA1"> <i></i> Sim
+                        &emsp; &emsp;<input type="radio" value="0" name="RESPOSTA1"> <i></i> Não
+                    </label>
+                </div>
+                <h3>Caso sim, qual?</h3>
+                <input type="text" name="RESPOSTA2" class="form-control">
+            </div>
+        </div>
+        <div class="col-md-12">
+            <br />
+            <br />
+        </div>
+        <hr />
+        <div class="form-group">
+            <h3>Não concordou com alguma pergunta?</h3>
+            <div class="col-md-12">
+                <div class="radio i-checks">
+                    <label>
+                        <input type="radio" value="1" name="RESPOSTA3"> <i></i> Sim
+                        &emsp; &emsp;<input type="radio" value="0" name="RESPOSTA3"> <i></i> Não
+                    </label>
+                </div>
+                <h3>Caso sim, qual e porque?</h3>
+                <textarea name="RESPOSTA4" rows="10" cols="70" placeholder="Escreva seu comentário..."></textarea>
+            </div>
+        </div>
+        <div class="col-md-12">
+            <br />
+            <br />
+        </div>
+        <hr />
+        <div class="form-group">
+            <h3>Faltou alguma pergunta?</h3>
+            <div class="col-md-12">
+                <div class="radio i-checks">
+                    <label>
+                        <input type="radio" value="1" name="RESPOSTA5"> <i></i> Sim
+                        &emsp; &emsp;<input type="radio" value="0" name="RESPOSTA5"> <i></i> Não
+                    </label>
+                </div>
+                <h3>Caso sim, qual e em que aspecto (negócio,técnico ou ambiente)?</h3>
+                <textarea name="RESPOSTA6" rows="10" cols="70" placeholder="Escreva seu comentário..."></textarea>
+            </div>
+        </div>
+        <div class="col-md-12">
+            <br />
+            <br />
+        </div>
+        <hr />
+        <div class="form-group">
+            <h3>Em qual nível a decisão foi tomada?</h3>
+            <div class="col-md-12">
+                <div class="radio i-checks">
+                    <label>
+                        <input type="radio" value="0" name="RESPOSTA7"> <i></i> Tático
+                        &emsp; &emsp;<input type="radio" value="1" name="RESPOSTA7"> <i></i> Executivo
+                        &emsp; &emsp;<input type="radio" value="2" name="RESPOSTA7"> <i></i> Ambos
+                    </label>
+                </div>
+            </div>
+        </div>
+        <br />
+        <div class="form-group">
+            <div class="form-group">
+                <div class="col-sm-12 col-sm-offset-2">
+                    @Html.ActionLink("Cancelar", "../Avaliacaos/IndexUsuario", null, new { @class = "btn btn-white" }) &emsp;
+                    <button class="btn btn-primary" type="submit" name="Submit" value="continuar">Enviar Feedback</button>
+                </div>
+                <br />
+                <br />
+                <br />
+                <br />
+            </div>
+        </div>
+    </div>
+}
+
+@section Styles {
+    @Styles.Render("~/Content/plugins/iCheck/iCheckStyles")
+}
+
+@section Scripts {
+    @Scripts.Render("~/plugins/wizardSteps")
+    @Scripts.Render("~/plugins/iCheck")
+    @Scripts.Render("~/plugins/validate")
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('.i-checks').iCheck({
+                checkboxClass: 'icheckbox_square-green',
+                radioClass: 'iradio_square-green',
+            });
+        });
+    </script>
+}
+
+
+

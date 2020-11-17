@@ -1,0 +1,58 @@
+﻿@model Inspinia_MVC5.Models.Avaliacao
+
+@{
+    ViewBag.Title = "Create";
+
+}
+
+<div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-sm-4">
+        <h2>Avaliação de Sistemas</h2>
+    </div>
+    <div class="col-sm-8">
+        <div class="title-action">
+            @Html.ActionLink("Voltar", "IndexUsuario", null, new { @class = "btn btn-white" })
+        </div>
+    </div>
+</div>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <div class="ibox-content">
+        <h4>Informação importante</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.ID_USUARIO)
+        @Html.HiddenFor(model => model.DATA)
+        @Html.HiddenFor(model => model.STATUS)
+        <div class="form-group">
+            @Html.LabelFor(model => model.NOME_SISTEMA, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.NOME_SISTEMA, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.NOME_SISTEMA, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <br />
+        <br />
+        <br />
+        <div class="form-group">
+            <div class="hr-line-dashed"></div>
+            <div class="form-group">
+                <div class="col-sm-4 col-sm-offset-2">
+                    <input class="btn btn-white" type="submit" name="Submit" value="Salvar e sair">&emsp;
+                    <input class="btn btn-primary" type="submit" name="Submit" value="Salvar e continuar">
+                </div>
+                <br />
+                <br />
+                <br />
+            </div>
+        </div>
+    </div>
+}
+
+
+
+
+
+

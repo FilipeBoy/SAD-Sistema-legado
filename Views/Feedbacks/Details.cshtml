@@ -1,0 +1,69 @@
+﻿@model Inspinia_MVC5.Models.Feedback
+@{
+    ViewBag.Title = "Details";
+
+}
+<div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-sm-12">
+        <h2>Feedback sobre a avaliação realizada</h2>
+    </div>
+</div>
+<div class="wrapper wrapper-content fadeInRight w3-center">
+    <div class="row">
+        <div class="col-lg-12">
+            @if (ViewData["Mensagem"] != null)
+            {
+                <h4 class="text-danger">&emsp;@ViewData["Mensagem"]</h4>
+            }
+            <div class="ibox float-e-margins">
+                <div class="ibox-content">
+                    <div>
+                        <b>@Html.DisplayNameFor(model => model.RESULTADO) : </b>@Html.DisplayFor(model => model.RESULTADO)
+                    </div>
+                    <br />
+                    <div>
+                        <b> @Html.DisplayNameFor(model => model.ESTRATEGIA_ADOTADA) : </b>@Html.DisplayFor(model => model.ESTRATEGIA_ADOTADA)
+                    </div>
+                    <br />
+                    <div>
+                        <b>@Html.DisplayNameFor(model => model.COMENTARIO) : </b>
+
+                    </div>
+                    <div>
+                        <textarea name="COMENTARIO" rows="10" cols="70" disabled>@Model.COMENTARIO</textarea>
+                    </div>
+                    <br />
+                    <br />
+
+                    @if (Session["Papel"].ToString().Equals("Admin"))
+                    {
+                        @Html.ActionLink("Voltar", "../Feedbacks/Index", null, new { @class = "btn btn-white" })
+                        if (ViewData["FeedComp"] != null)
+                        {
+                            if (ViewData["FeedComp"].GetHashCode() != 0)
+                            {
+                                @Html.ActionLink("Feedback Complementar", "DetailsComplementar", new { id = Model.ID_FEEDBACK }, new { @class = "btn btn-primary" })<span>&emsp;</span>
+                            }
+                        }
+
+                    }
+                    else
+                    {
+                        @Html.ActionLink("Editar", "Edit", new { id = Model.ID_FEEDBACK }, new { @class = "btn btn-primary" })<span>&emsp;</span>
+                        if (ViewData["FeedComp"] != null)
+                        {
+                            if (ViewData["FeedComp"].GetHashCode() != 0)
+                            {
+                                @Html.ActionLink("Feedback Complementar", "DetailsComplementar", new { id = Model.ID_FEEDBACK }, new { @class = "btn btn-primary" })<span>&emsp;</span>
+                            }
+                        }
+                        @Html.ActionLink("Voltar", "../Avaliacaos/IndexUsuario", null, new { @class = "btn btn-white" })
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+

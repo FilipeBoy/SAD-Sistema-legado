@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<parameters>
+  <parameter name="InspiniaContext-Web.config Connection String" description="InspiniaContext A Cadeia de Conexão usada em web.config pelo aplicativo para acessar o banco de dados." defaultValue="Data Source=(localdb)\MSSQLLocalDB; Initial Catalog=InspiniaContext-20180703114813; Integrated Security=True; MultipleActiveResultSets=True; AttachDbFilename=|DataDirectory|InspiniaContext-20180703114813.mdf" tags="SqlConnectionString">
+    <parameterEntry kind="XmlFile" scope="C:\\Users\\Boy\\Documents\\Projeto_TCC\\Inspinia_MVC5\\obj\\Debug\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='InspiniaContext']/@connectionString" />
+  </parameter>
+  <parameter name="InspiniaContext_DatabasePublish-Web.config Connection String" description="InspiniaContext_DatabasePublish A Cadeia de Conexão usada em web.config pelo aplicativo para acessar o banco de dados." defaultValue="InspiniaContext_DatabasePublish.ConnetionString" tags="SqlConnectionString">
+    <parameterEntry kind="XmlFile" scope="C:\\Users\\Boy\\Documents\\Projeto_TCC\\Inspinia_MVC5\\obj\\Debug\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='InspiniaContext_DatabasePublish']/@connectionString" />
+  </parameter>
+</parameters>

@@ -1,0 +1,94 @@
+﻿@model Inspinia_MVC5.Models.MailModel
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<title>SAD Sistemas Legados</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="~/Content/w3.css">
+<style>
+    body, html {
+        height: 100%
+    }
+
+    .logo-name {
+        color: white; /*#1ab394 #e6e6e6;*/
+        text-shadow: black 0.1em 0.1em 0.2em;
+        font-size: 50px;
+        font-weight: 800;
+        letter-spacing: 0px;
+        margin-bottom: 0;
+        margin-top: 20px;
+        font-family: inherit;
+        line-height: 1.1;
+        text-align: center;
+    }
+
+    .menu {
+        display: none
+    }
+
+    .bgimg {
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-image: url("/Images/wallpaper2.jpg");
+        min-height: 90%;
+    }
+</style>
+<body>
+    <div class="navbar navbar-static-top">
+        <div class="w3-top">
+            <div class="w3-bar w3-large w3-black w3-hover-opacity-off w3-text-white" id="myNavbar">
+                <a href="../Home/Index" class="w3-bar-item w3-button">Início</a>
+                <a href="../Home/Index#menu" class="w3-bar-item w3-button">Sobre</a>
+                <a href="../Home/Index#about" class="w3-bar-item w3-button">Quem somos</a>
+                <a href="../SendMailer/Index" class="w3-bar-item w3-button">Contato</a>
+                <a href="../Usuarios/Login" class="w3-bar-item w3-button w3-right">Entrar</a>
+            </div>
+        </div>
+    </div>
+    <div class="w3-container w3-light-grey" style="padding:50px 16px" id="contact">
+        <h3 class="w3-center w3-jumbo w3-text-black">Contato</h3>
+        <p class="w3-center w3-xlarge w3-text-black">Entre em contato conosco!</p>
+        <div class="w3-row-padding" style="margin-top:10px">
+            <div class="w3-half">
+                <p class="w3-text-black"><i class="fa fa-map-marker fa-fw w3-large w3-margin-right">Porto Alegre, Brasil</i></p>
+                <p class="w3-text-black"><i class="fa fa-phone fa-fw w3-large w3-margin-right">Telefone: (51) 986406621</i></p>
+                <p class="w3-text-black"><i class="fa fa-envelope fa-fw w3-large w3-margin-right">Email: filipe.batista.boy@gmail.com</i></p>
+                <br>
+            </div>
+            <div class="w3-half">
+                @if (TempData["Mensagem"] != null)
+                {
+                    <h4 style="color:red">&emsp;@TempData["Mensagem"]</h4>
+                }
+                @using (Html.BeginForm())
+                {
+                    @Html.ValidationSummary()
+                    <p><b><input class="w3-input w3-border  w3-text-black" type="text" placeholder="Email" required name="From"></b></p>
+                    <p><b><input class="w3-input w3-border  w3-text-black" type="text" placeholder="Título" required name="Subject"></b></p>
+                    <p><b><textarea class="w3-input w3-border  w3-text-black" name="Body" rows="8" cols="70" placeholder="Escreva sua mensagem..."></textarea></b></p>
+                    <p>
+                        <button class="w3-button w3-black" type="submit">
+                            <i class="fa fa-paper-plane"></i> Enviar
+                        </button>
+                    </p>
+                }
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Footer -->
+    <footer class="w3-center w3-black w3-padding-48 w3-xlarge">
+        <strong>Copyright</strong> Filipe Costa Batista Boy &copy; 2018
+    </footer>
+
+
+</body>
+</html>
+
+

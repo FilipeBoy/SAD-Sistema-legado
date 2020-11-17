@@ -1,0 +1,324 @@
+﻿@model Inspinia_MVC5.Models.Avaliacao
+@{
+    ViewBag.Title = "Resultado";
+}
+
+<div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-sm-4">
+        <h2>Resultado</h2>
+    </div>
+    <div class="col-sm-8">
+        <div class="title-action">
+            @if (Session["Papel"].ToString().Equals("Admin"))
+            {
+                @Html.ActionLink("Voltar", "../Avaliacaos/Index", new { }, htmlAttributes: new { @class = "btn btn-white" })
+            }
+            else
+            {
+                @Html.ActionLink("Voltar", "../Avaliacaos/IndexUsuario", new { }, htmlAttributes: new { @class = "btn btn-white" })
+            }
+            @if (Session["Conta"].ToString().Equals("PRO"))
+            {
+                <span>&emsp;</span>
+                @Html.ActionLink("Comparações de resultados", "../Avaliacaos/ViewComparacao", new { id = Model.ID_AVALIACAO }, htmlAttributes: new { @class = "btn btn-primary" })
+                <span>&emsp;</span>
+                @Html.ActionLink("Laudo", "../Avaliacaos/LaudoTecnico", new { id = Model.ID_AVALIACAO }, htmlAttributes: new { @class = "btn btn-primary" })
+            }
+        </div>
+    </div>
+</div>
+
+<div class="wrapper wrapper-content">
+    <div class="row">
+        <div class="col-lg-3">
+            <div class="ibox float-e-margins">
+                <div class="ibox-content  text-center">
+                    <h3><b>Nota final</b></h3>
+                </div>
+                <div class="ibox-content text-center">
+                    <h1 class="no-margins">@ViewData["nota_final"].ToString()</h1>
+                    <h4>Total de pontos</h4>
+                    <small>Escala de 0 a 10</small>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3">
+            <div class="ibox float-e-margins">
+                <div class="ibox-content  text-center">
+                    <h3>Importância para o negócio</h3>
+                </div>
+                <div class="ibox-content  text-center">
+                    <h1 class="no-margins">@ViewData["nota_neg"].ToString()</h1>
+                    <h4>Total de pontos</h4>
+                    <small>Escala de 0 a 10</small>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3">
+            <div class="ibox float-e-margins">
+                <div class="ibox-content  text-center">
+                    <h3>Qualidade Técnica</h3>
+                </div>
+                <div class="ibox-content  text-center">
+                    <h1 class="no-margins">@ViewData["nota_tec"].ToString()</h1>
+                    <h4>Total de pontos</h4>
+                    <small>Escala de 0 a 10</small>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3">
+            <div class="ibox float-e-margins">
+                <div class="ibox-content  text-center">
+                    <h3>Qualidade do ambiente</h3>
+                </div>
+                <div class="ibox-content text-center">
+                    <h1 class="no-margins">@ViewData["nota_amb"].ToString()</h1>
+                    <h4>Total de pontos</h4>
+                    <small>Escala de 0 a 10</small>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="ibox float-e-margins">
+                <div class="ibox-content text-center p-md">
+                    <h2>
+                        Para este sistema, a melhor estratégia de evolução a ser seguida é<br />
+                        <span class="text-navy"><b>@ViewData["resultado"].ToString()</b></span>
+                    </h2>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    @if (Session["Conta"].ToString().Equals("PRO"))
+    {
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="ibox float-e-margins">
+                    <div class="ibox-title">
+                        <h5>Avaliação Geral</h5>
+                    </div>
+                    <div class="ibox-content">
+                        <div>
+                            <canvas id="barChart1" height="140"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="ibox float-e-margins">
+                    <div class="ibox-title">
+                        <h5>Avaliação Geral</h5>
+                    </div>
+                    <div class="ibox-content">
+                        <div>
+                            <canvas id="doughnutChart" height="140"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="ibox float-e-margins">
+                    <div class="ibox-title">
+                        <h5>Importância para o negócio</h5>
+                    </div>
+                    <div class="ibox-content">
+                        <div>
+                            <canvas id="barChart2" height="140"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="ibox float-e-margins">
+                    <div class="ibox-title">
+                        <h5>Qualidade do ambiente</h5>
+                    </div>
+                    <div class="ibox-content">
+                        <div>
+                            <canvas id="barChart4" height="140"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="ibox float-e-margins">
+                    <div class="ibox-title">
+                        <h5>Qualidade técnica</h5>
+                    </div>
+                    <div class="ibox-content">
+                        <div>
+                            <canvas id="barChart3" height="140"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/plugins/chartjs")
+    <script type="text/javascript">
+        $.ajax({
+            type: "POST",
+            url: "/Avaliacaos/GraficoBarGeral",
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            success: function (mems) {
+                var aData = mems;
+                var aLabels = aData[0];
+                var aDatasets1 = aData[1];
+                var dataT = {
+                    labels: aLabels,
+                    datasets: [{
+                        label: 'Nota',
+                        data: aDatasets1,
+                        fill: false,
+                        backgroundColor: ["#a3e1d4", "#dedede", "#b5b8cf"],
+                        pointBorderColor: "#fff"
+                    }]
+                };
+                var ctx = $("#barChart1").get(0).getContext("2d");
+                var myNewChart = new Chart(ctx, {
+                    type: 'bar',
+                    data: dataT,
+                    options: {
+                        responsive: true,
+                        legend: { position: 'bottom' },
+                        scales: {
+                            xAxes: [{ gridLines: { display: false }, display: true, scaleLabel: { display: false, labelString: '' } }],
+                            yAxes: [{ gridLines: { display: false }, display: true, scaleLabel: { display: false, labelString: '' }, ticks: { stepSize: 10, beginAtZero: true } }]
+                        },
+                    }
+                });
+
+                var doughnutData = {
+                    labels: aData[0],
+                    datasets: [{
+                        data: aData[1],
+                        backgroundColor: ["#a3e1d4", "#dedede", "#b5b8cf"]
+                    }]
+                };
+
+                var doughnutOptions = {
+                    responsive: true
+                };
+
+                var ctx4 = document.getElementById("doughnutChart").getContext("2d");
+                new Chart(ctx4, { type: 'doughnut', data: doughnutData, options: doughnutOptions });
+            }
+        });
+
+        $.ajax({
+            type: "POST",
+            url: "/Avaliacaos/GraficoNegocio",
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            success: function (mems) {
+                var aData = mems;
+                var aLabels = aData[0];
+                var aDatasets1 = aData[1];
+                var dataT = {
+                    labels: aLabels,
+                    datasets: [{
+                        label: 'Nota',
+                        data: aDatasets1,
+                        fill: false,
+                        backgroundColor: '#a3e1d4',
+                        pointBorderColor: "#fff"
+                    }]
+                };
+                var ctx = $("#barChart2").get(0).getContext("2d");
+                var myNewChart = new Chart(ctx, {
+                    type: 'bar',
+                    data: dataT,
+                    options: {
+                        responsive: true,
+                        legend: { position: 'bottom' },
+                        scales: {
+                            xAxes: [{ gridLines: { display: false }, display: true, scaleLabel: { display: false, labelString: '' } }],
+                            yAxes: [{ gridLines: { display: false }, display: true, scaleLabel: { display: false, labelString: '' }, ticks: { stepSize: 10, beginAtZero: true } }]
+                        },
+                    }
+                });
+            }
+        });
+        $.ajax({
+            type: "POST",
+            url: "/Avaliacaos/GraficoTecnico",
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            success: function (mems) {
+                var aData = mems;
+                var aLabels = aData[0];
+                var aDatasets1 = aData[1];
+                var dataT = {
+                    labels: aLabels,
+                    datasets: [{
+                        label: 'Nota',
+                        data: aDatasets1,
+                        fill: false,
+                        backgroundColor: '#a3e1d4',
+                        pointBorderColor: "#fff"
+                    }]
+                };
+                var ctx = $("#barChart3").get(0).getContext("2d");
+                var myNewChart = new Chart(ctx, {
+                    type: 'bar',
+                    data: dataT,
+                    options: {
+                        responsive: true,
+                        legend: { position: 'bottom' },
+                        scales: {
+                            xAxes: [{ gridLines: { display: false }, display: true, scaleLabel: { display: false, labelString: '' } }],
+                            yAxes: [{ gridLines: { display: false }, display: true, scaleLabel: { display: false, labelString: '' }, ticks: { stepSize: 10, beginAtZero: true } }]
+                        },
+                    }
+                });
+            }
+        });
+        $.ajax({
+            type: "POST",
+            url: "/Avaliacaos/GraficoAmbiente",
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            success: function (mems) {
+                var aData = mems;
+                var aLabels = aData[0];
+                var aDatasets1 = aData[1];
+                var dataT = {
+                    labels: aLabels,
+                    datasets: [{
+                        label: 'Nota',
+                        data: aDatasets1,
+                        fill: false,
+                        backgroundColor: '#a3e1d4',
+                        pointBorderColor: "#fff"
+                    }]
+                };
+                var ctx = $("#barChart4").get(0).getContext("2d");
+                var myNewChart = new Chart(ctx, {
+                    type: 'bar',
+                    data: dataT,
+                    options: {
+                        responsive: true,
+                        legend: { position: 'bottom' },
+                        scales: {
+                            xAxes: [{ gridLines: { display: false }, display: true, scaleLabel: { display: false, labelString: '' } }],
+                            yAxes: [{ gridLines: { display: false }, display: true, scaleLabel: { display: false, labelString: '' }, ticks: { stepSize: 10, beginAtZero: true } }]
+                        },
+                    }
+                });
+            }
+        });
+    </script>
+}
+
+

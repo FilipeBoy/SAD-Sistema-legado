@@ -1,0 +1,83 @@
+﻿<style>
+    #logo {
+        display: inline-block;
+        position: relative;
+    }
+
+        #logo figcaption {
+            position: absolute;
+            top: 5%;
+            right: 10%;
+            left: 10%;
+            font-size: 40px;
+            color: white;
+        }
+</style>
+<nav class="navbar-default navbar-static-side" role="navigation">
+    <div class="sidebar-collapse">
+        <ul class="nav" id="side-menu">
+            <li class="nav-header">
+                <div class="dropdown profile-element">
+                    @if (Session["sigla"] != null)
+                    {
+                        <figure id="logo" class="text-center">
+                            <img src="~/Images/logo.jpg" alt="image" class="img-circle center-block" style="width:50%" />
+                            <figcaption>@Session["sigla"].ToString()</figcaption>
+                        </figure>
+                    }
+                    <br />
+                    <span class="text-white text-center block font-bold">@Session["Nome"]</span>
+                </div>
+                <div class="logo-element">
+                    SAD
+                </div>
+            </li>
+            @if (Session["Papel"] != null)
+            {
+                <li class="@Html.IsSelected(controller: "Usuarios")">
+                    <a href="@Url.Action("Inicio", "Home")"><i class="fa fa-home"></i> <span class="nav-label" data-i18n="nav.dashboard">Início</span></a>
+                </li>
+                <li class="@Html.IsSelected(controller: "Usuarios")">
+                    <a href="@Url.Action("Details", "Usuarios")">
+                        <i class="fa fa-user"></i> <span class="nav-label" data-i18n="nav.dashboard">Informaçãoes da Conta</span>
+                        @if (Session["aviso"] != null)
+                        {
+                            <span class="label label-warning pull-right">@Session["aviso"].ToString()</span>
+                        }
+                    </a>
+                </li>
+                if (Session["Papel"].ToString().Equals("Admin"))
+                {
+
+                    <li class="@Html.IsSelected(controller: "Usuarios")">
+                        <a href="@Url.Action("Index", "Usuarios")"><i class="fa fa-users"></i> <span class="nav-label" data-i18n="nav.dashboard">Usuários</span></a>
+                    </li>
+                    <li class="@Html.IsSelected(controller: "Usuarios")">
+                        <a href="@Url.Action("Index", "Avaliacaos")"><i class="fa fa-star"></i> <span class="nav-label" data-i18n="nav.dashboard">Avaliações</span></a>
+                    </li>
+                    <li class="@Html.IsSelected(controller: "Usuarios")">
+                        <a href="@Url.Action("Index", "Feedbacks")"><i class="fa fa-send"></i> <span class="nav-label" data-i18n="nav.dashboard">Feedbacks</span></a>
+                    </li>
+                    <li class="@Html.IsSelected(controller: "Usuarios")">
+                        <a href="@Url.Action("Index", "Relatorios")"><i class="fa fa-bar-chart-o"></i> <span class="nav-label" data-i18n="nav.dashboard">Relatórios</span></a>
+                    </li>
+                }
+                else
+                {
+                    <li class="@Html.IsSelected(controller: "Usuarios")">
+                        <a href="@Url.Action("Create", "Avaliacaos")"><i class="fa fa-star"></i> <span class="nav-label" data-i18n="nav.dashboard">Nova Avaliação</span></a>
+                    </li>
+                    <li class="@Html.IsSelected(controller: "Usuarios")">
+                        <a href="@Url.Action("IndexUsuario", "Avaliacaos")"><i class="fa fa-list"></i> <span class="nav-label" data-i18n="nav.dashboard">Lista de Avaliações</span></a>
+                    </li>
+                }
+            }
+            <li class="@Html.IsSelected(controller: "Usuarios")">
+                <a href="@Url.Action("Contato", "SendMailer")"><i class="fa fa-envelope"></i> <span class="nav-label" data-i18n="nav.dashboard">Contato</span></a>
+            </li>
+            <li class="@Html.IsSelected(controller: "Usuarios")">
+                <a href="@Url.Action("Logoff", "Usuarios")"><i class="fa fa-sign-out"></i> <span class="nav-label" data-i18n="nav.dashboard">Sair</span></a>
+            </li>
+        </ul>
+    </div>
+</nav>

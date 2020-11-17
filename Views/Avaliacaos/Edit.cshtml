@@ -1,0 +1,61 @@
+﻿@model Inspinia_MVC5.Models.Avaliacao
+
+@{
+    ViewBag.Title = "Edit";
+
+}
+<div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-sm-4">
+        <h2>Alterar informações da avaliação</h2>
+    </div>
+    <div class="col-sm-8">
+        <div class="title-action">
+            @Html.ActionLink("Voltar", "IndexUsuario", null, new { @class = "btn btn-primary" })
+        </div>
+    </div>
+</div>
+
+<div class="row wrapper border-bottom white-bg page-heading">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="ibox float-e-margins">
+                <div class="ibox-content">
+                    @using (Html.BeginForm())
+                    {
+                        @Html.AntiForgeryToken()
+                        if (ViewData["Mensagem"] != null)
+                        {
+                            <h4 class="text-danger">@ViewData["Mensagem"].ToString()</h4>
+                        }
+                        <div class="form-horizontal">
+                            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                            @Html.HiddenFor(model => model.ID_AVALIACAO)
+                            @Html.HiddenFor(model => model.ID_USUARIO)
+                            @Html.HiddenFor(model => model.DATA)
+                            @Html.HiddenFor(model => model.STATUS)
+                            @Html.HiddenFor(model => model.RESULTADO)
+                            @Html.HiddenFor(model => model.AV_NOTA_FINAL)
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.NOME_SISTEMA, htmlAttributes: new { @class = "control-label col-md-2" })
+                                <div class="col-md-10">
+                                    @Html.EditorFor(model => model.NOME_SISTEMA, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.NOME_SISTEMA, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                            <br />
+                            <br />
+                            <br />
+                            <div class="form-group">
+                                <div class="col-sm-4 col-sm-offset-2">
+                                    <input type="submit" value="Alterar" class="btn btn-primary" />
+                                    <a href="/Usuarios/Details" class="btn btn-white">Cancelar</a>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

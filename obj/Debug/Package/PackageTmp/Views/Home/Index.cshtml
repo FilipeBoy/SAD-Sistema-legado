@@ -1,0 +1,178 @@
+﻿@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html>
+<title>SAD Sistemas Legados</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="~/Content/w3.css">
+<style>
+    body, html {
+        height: 100%
+    }
+
+    .logo-name {
+        color: white; /*#1ab394 #e6e6e6;*/
+        text-shadow: black 0.1em 0.1em 0.2em;
+        font-size: 50px;
+        font-weight: 800;
+        letter-spacing: 0px;
+        margin-bottom: 0;
+        margin-top: 20px;
+        font-family: inherit;
+        line-height: 1.1;
+        text-align: center;
+    }
+
+    .menu {
+        display: none
+    }
+
+    .bgimg {
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-image: url("/Images/wallpaper2.jpg");
+        min-height: 90%;
+    }
+</style>
+<body>
+    <div class="navbar navbar-static-top">
+        <div class="w3-top">
+            <div class="w3-bar w3-large w3-black w3-hover-opacity-off w3-text-white" id="myNavbar">
+                <a href="#" class="w3-bar-item w3-button">Início</a>
+                <a href="#menu" class="w3-bar-item w3-button">Sobre</a>
+                <a href="#about" class="w3-bar-item w3-button">Quem somos</a>
+                <a href="../SendMailer/Index" class="w3-bar-item w3-button">Contato</a>
+                <a href="../Usuarios/Login" class="w3-bar-item w3-button w3-right">Entrar</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Header with image -->
+    <header class="bgimg w3-display-container w3-grayscale-min" id="home">
+        <div class="w3-display-bottomleft w3-padding">
+        </div>
+        <div class="w3-display-middle w3-center">
+            <span class="logo-name"><b>SAD como solução para adoção de estratégias de evolução de Sistemas Legados</b></span>
+            <p><a href="#pricing" class="w3-button w3-xxlarge w3-text-white" style="background-color:#1ab394">Cadastre-se</a></p>
+        </div>
+    </header>
+
+    <!-- Menu Container -->
+    <div class="w3-container w3-black w3-padding-64 w3-xxlarge" id="menu">
+        <div class="w3-content">
+            <h1 class="w3-center w3-jumbo" style="margin-bottom:64px">Sobre</h1>
+            <div class="w3-row w3-justify w3-border w3-border-dark-grey">
+                <h3>
+                    Sistemas de informação com muitos anos de utilização são chamados de Sistemas Legados, e os custos para
+                    realizar manutenção nestes sistemas podem se tornar maiores do que o retorno que o mesmo oferece para os negócios.
+                    Em algum momento, o gestor responsável pelo sistema se encontrará diante da situação onde deverá avaliar o sistema e
+                    decidir o que fazer com o mesmo. Tendo isto em mente, esta ferramenta é fruto de um trabalho de conclusão de curso que
+                    visa auxiliar gestores à avaliarem seus sistemas de forma mais completa, considerando os aspectos de importância para
+                    negócio, qualidade técnica e qualidade do ambiente, e ainda auxiliar na tomada de decisão em qual estratégia de evolução
+                    seguir com o sistema legado.
+                </h3>
+            </div><br>
+        </div>
+    </div>
+
+    <!-- About Container -->
+    <div class="w3-container w3-padding-64 w3-white w3-text-black w3-grayscale w3-xlarge" id="about">
+        <div class="w3-content">
+            <h1 class="w3-center w3-jumbo w3-text-black" style="margin-bottom:64px">Quem somos</h1>
+            <div class="w3-row">
+                <br>
+                <div class="w3-quarter w3-text-black">
+                    <img src="~/Images/logo-faculdade.jpg" alt="Boss" style="width:50%" class=" w3-hover-opacity">
+                    <h5 class="w3-text-black">Faculdade Dom Bosco <br /> Porto Alegre</h5>
+                </div>
+                <div class="w3-quarter w3-text-black">
+                    <img src="~/Images/filipe.jpg" alt="Boss" style="width:50%" class="w3-circle w3-hover-opacity">
+                    <h5 class="w3-text-black">Filipe Costa Batista Boy <br />Aluno</h5>
+                </div>
+                <div class="w3-quarter w3-text-black">
+                    <img src="~/Images/adriano.jpg" alt="Boss" style="width:50%" class="w3-circle w3-hover-opacity">
+                    <h5 class="w3-text-black">Adriano de Oliveira Martins<br />Orientador</h5>
+                </div>
+                <div class="w3-quarter w3-text-black">
+                    <img src="~/Images/sistemas.jpg" alt="Boss" style="width:50%" class=" w3-hover-opacity">
+                    <h5 class="w3-text-black"><br />Sistemas de Informação</h5>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Pricing Section -->
+    <div class="w3-container w3-center w3-dark-grey" style="padding:60px 16px" id="pricing">
+        <h1 class="w3-center w3-jumbo w3-text-black" style="margin-bottom:64px">Tipos de conta</h1>
+        <h1 class="w3-center w3-text-red">Ótima oportunidade!</h1>
+        <h3 class="text-center w3-text-white">
+            Por motivos de teste, os dois tipos de conta estão de forma gratuita. Pode se cadastrar em qualquer uma
+            das duas, que não será necessário efetuar nenhum tipo de pagamento ou casdastro de cartão.
+        </h3>
+        <div class="w3-row-padding" style="margin-top:64px">
+            <div class="w3-half w3-section">
+                <ul class="w3-ul w3-white w3-hover-shadow">
+                    <li class="w3-black w3-xlarge w3-padding-16"><h1>Gratuito</h1></li>
+                    <li class="w3-padding-16"><h4>Limite de 3 avaliações</h4></li>
+                    <li class="w3-padding-16"><h4>Sugestão de estratégia</h4></li>
+                    <li class="w3-padding-16">
+                        <h4 class="w3-wide">R$ 0</h4>
+                        <span class="w3-wide"><h4>por mês</h4></span>
+                    </li>
+                    <li class="w3-light-grey w3-padding-24">
+                        <a href="../Usuarios/CreateFree" class="w3-button w3-xlarge w3-black">Cadastre-se</a>
+                    </li>
+                </ul>
+            </div>
+            <div>
+            </div>
+            <div class="w3-half">
+                <ul class="w3-ul w3-white w3-hover-shadow">
+                    <li class="w3-xlarge w3-padding-16" style="background-color:#1ab394"><h1>Pro</h1></li>
+                    <li class="w3-padding-16"><h4>Sem limites de avaliação</h4></li>
+                    <li class="w3-padding-16"><h4>Sugestão de estratégia</h4></li>
+                    <li class="w3-padding-16"><h4>Detalhamento de resultados</h4></li>
+                    <li class="w3-padding-16"><h4>Laudo técnico</h4></li>
+                    <li class="w3-padding-16"><h4>Comparação de resultados</h4></li>
+                    <li class="w3-padding-16">
+                        <h4 class="w3-wide">R$ 25</h4>
+                        <span class="w3-wide"><h4>por mês</h4></span>
+                    </li>
+                    <li class="w3-light-grey w3-padding-24">
+                        <a href="../Usuarios/CreatePro" class="w3-button w3-xlarge" style="background-color:#1ab394">Cadastre-se</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Footer -->
+    <footer class="w3-center w3-black w3-padding-48 w3-xlarge">
+        <strong>Copyright</strong> Filipe Costa Batista Boy &copy; 2018
+    </footer>
+
+
+    <script>
+
+        // Tabbed Menu
+        function openMenu(evt, menuName) {
+            var i, x, tablinks;
+            x = document.getElementsByClassName("menu");
+            for (i = 0; i < x.length; i++) {
+                x[i].style.display = "none";
+            }
+            tablinks = document.getElementsByClassName("tablink");
+            for (i = 0; i < x.length; i++) {
+                tablinks[i].className = tablinks[i].className.replace(" w3-red", "");
+            }
+            document.getElementById(menuName).style.display = "block";
+            evt.currentTarget.firstElementChild.className += " w3-red";
+        }
+        document.getElementById("myLink").click();
+    </script>
+</body>
+</html>

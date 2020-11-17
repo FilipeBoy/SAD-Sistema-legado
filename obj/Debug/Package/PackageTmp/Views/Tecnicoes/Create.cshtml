@@ -1,0 +1,330 @@
+﻿@model Inspinia_MVC5.Models.Tecnico
+
+@{
+    ViewBag.Title = "Create";
+
+}
+<div class="row wrapper border-bottom white-bg page-heading">
+    <ul class="progress-indicator">
+        <li class="completed"> <span class="bubble"></span> Importância para o negócio </li>
+        <li class="completed"> <span class="bubble"></span> Qualidade Técnica </li>
+        <li> <span class="bubble"></span> Qualidade do Ambiente </li>
+    </ul>
+</div>
+<div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-sm-12 text-center">
+        <h2>Avaliação da qualidade técnica do sistema</h2>
+    </div>
+</div>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+<div class="ibox-content">
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    @Html.HiddenFor(model => model.ID_AVALIACAO)
+    <div class="form-group">
+        <h3><b>Questão 1: </b> Quão difícil é compreender o código-fonte do sistema atual?</h3>
+        <div class="col-md-10">
+            <div class="radio i-checks">
+                <label>
+                    <input type="radio" value="10" name="RESPOSTA1" required> <i></i> Fácil
+                    &emsp;<input type="radio" value="5" name="RESPOSTA1"> <i></i> Moderado
+                    &emsp;<input type="radio" value="0" name="RESPOSTA1"> <i></i> Difícil
+                </label>
+            </div>
+        </div>
+    </div>
+    <br />
+    <hr />
+    <div class="form-group">
+        <h3><b>Questão 2: </b>Quão complexas são as estruturas de controle usadas?</h3>
+        <div class="col-md-10">
+            <div class="radio i-checks">
+                <label>
+                    <input type="radio" value="10" name="RESPOSTA2" required> <i></i> Pouco
+                    &emsp;<input type="radio" value="5" name="RESPOSTA2"> <i></i> Moderado
+                    &emsp;<input type="radio" value="0" name="RESPOSTA2"> <i></i> Muito
+                </label>
+            </div>
+        </div>
+    </div>
+    <br />
+    <hr />
+    <div class="form-group">
+        <h3><b>Questão 3: </b> As variáveis têm nomes significativos que refletem sua função?</h3>
+        <div class="col-md-10">
+            <div class="radio i-checks">
+                <label>
+                    <input type="radio" value="10" name="RESPOSTA3" required> <i></i> Sim
+                    &emsp;<input type="radio" value="0" name="RESPOSTA3"> <i></i> Não
+                </label>
+            </div>
+        </div>
+    </div>
+    <br />
+    <hr />
+    <div class="form-group">
+        <h3><b>Questão 4: </b>A documentação é completa, consistente e atual?</h3>
+        <div class="col-md-10">
+            <div class="radio i-checks">
+                <label>
+                    <input type="radio" value="10" name="RESPOSTA4" required> <i></i> Sim
+                    &emsp;<input type="radio" value="0" name="RESPOSTA4"> <i></i> Não
+                </label>
+            </div>
+        </div>
+    </div>
+    <br />
+    <hr />
+    <div class="form-group">
+        <h3><b>Questão 5: </b> Existe um modelo de dados explícito para o sistema?</h3>
+        <div class="col-md-10">
+            <div class="radio i-checks">
+                <label>
+                    <input type="radio" value="10" name="RESPOSTA5" required> <i></i> Sim
+                    &emsp;<input type="radio" value="0" name="RESPOSTA5"> <i></i> Não
+                </label>
+            </div>
+        </div>
+    </div>
+    <br />
+    <hr />
+    <div class="form-group">
+        <h3><b>Questão 6: </b>Os dados usados pelo sistema são atuais e consistentes?</h3>
+        <div class="col-md-10">
+            <div class="radio i-checks">
+                <label>
+                    <input type="radio" value="10" name="RESPOSTA6" required> <i></i> Sim
+                    &emsp;<input type="radio" value="0" name="RESPOSTA6"> <i></i> Não
+                </label>
+            </div>
+        </div>
+    </div>
+    <br />
+    <hr />
+    <div class="form-group">
+        <h3><b>Questão 7: </b> O desempenho da aplicação é adequado?</h3>
+        <div class="col-md-10">
+            <div class="radio i-checks">
+                <label>
+                    <input type="radio" value="10" name="RESPOSTA7" required> <i></i> Sim
+                    &emsp;<input type="radio" value="0" name="RESPOSTA7"> <i></i> Não
+                </label>
+            </div>
+        </div>
+    </div>
+    <br />
+    <hr />
+    <div class="form-group">
+        <h3><b>Questão 8: </b>Qual a linguagem de programação utilizada?</h3>
+        <div class="col-md-10">
+            <div class="col-md-10">
+                <input type="text" name="RESPOSTA8" class="form-control" required>
+            </div>
+        </div>
+    </div>
+    <br />
+    <hr />
+    <div class="form-group">
+        <h3><b>Questão 9: </b>A linguagem de programação ainda é usada para o desenvolvimento de novos sistemas?</h3>
+        <div class="col-md-10">
+            <div class="radio i-checks">
+                <label>
+                    <input type="radio" value="10" name="RESPOSTA9" required> <i></i> Sim
+                    &emsp;<input type="radio" value="0" name="RESPOSTA9"> <i></i> Não
+                </label>
+            </div>
+        </div>
+    </div>
+    <br />
+    <hr />
+    <div class="form-group">
+        <h3><b>Questão 10: </b>Todas as versões de todas as partes do sistema são gerenciadas por um sistema de gerenciamento de configuração?</h3>
+        <div class="col-md-10">
+            <div class="radio i-checks">
+                <label>
+                    <input type="radio" value="10" name="RESPOSTA10" required> <i></i> Sim
+                    &emsp;<input type="radio" value="0" name="RESPOSTA10"> <i></i> Não
+                </label>
+            </div>
+        </div>
+    </div>
+    <br />
+    <hr />
+    <div class="form-group">
+        <h3><b>Questão 11: </b> Existe uma descrição explícita das versões de componentes usadas no sistema atual?</h3>
+        <div class="col-md-10">
+            <div class="radio i-checks">
+                <label>
+                    <input type="radio" value="10" name="RESPOSTA11" required> <i></i> Sim
+                    &emsp;<input type="radio" value="0" name="RESPOSTA11"> <i></i> Não
+                </label>
+            </div>
+        </div>
+    </div>
+    <br />
+    <hr />
+    <div class="form-group">
+        <h3><b>Questão 12: </b>Existem dados de teste para o sistema?</h3>
+        <div class="col-md-10">
+            <div class="radio i-checks">
+                <label>
+                    <input type="radio" value="10" name="RESPOSTA12" required> <i></i> Sim
+                    &emsp;<input type="radio" value="0" name="RESPOSTA12"> <i></i> Não
+                </label>
+            </div>
+        </div>
+    </div>
+    <hr />
+    <br />
+    <div class="form-group">
+        <h3><b>Questão 13: </b>Existem registros dos testes de regressão feitos quando novos recursos forem adicionados ao sistema?</h3>
+        <div class="col-md-10">
+            <div class="radio i-checks">
+                <label>
+                    <input type="radio" value="10" name="RESPOSTA13" required> <i></i> Sim
+                    &emsp;<input type="radio" value="0" name="RESPOSTA13"> <i></i> Não
+                </label>
+            </div>
+        </div>
+    </div>
+    <br />
+    <hr />
+    <div class="form-group">
+        <h3><b>Questão 14: </b>Existem pessoas disponíveis com as habilidades necessárias para manter a aplicação?</h3>
+        <div class="col-md-10">
+            <div class="radio i-checks">
+                <label>
+                    <input type="radio" value="10" name="RESPOSTA14" required> <i></i> Sim
+                    &emsp;<input type="radio" value="0" name="RESPOSTA14"> <i></i> Não
+                </label>
+                @Html.ValidationMessageFor(model => model.RESPOSTA1, "", new { @class = "w3-text-red" })
+            </div>
+        </div>
+    </div>
+    <br />
+    <hr />
+    <div class="form-group">
+        <h3><b>Questão 15: </b>Existem pessoas disponíveis que tenham experiência no sistema?</h3>
+        <div class="col-md-10">
+            <div class="radio i-checks">
+                <label>
+                    <input type="radio" value="10" name="RESPOSTA15" required> <i></i> Sim
+                    &emsp;<input type="radio" value="0" name="RESPOSTA15"> <i></i> Não
+                </label>
+            </div>
+        </div>
+    </div>
+    <br />
+    <hr />
+    <div class="form-group">
+        <h3><b>Questão 16: </b>Quantidade de solicitações de mudança no sistema?</h3>
+        <div class="col-md-10">
+            <div class="radio i-checks">
+                <label>
+                    <input type="radio" value="10" name="RESPOSTA16" required> <i></i> Pouca
+                    &emsp;<input type="radio" value="5" name="RESPOSTA16"> <i></i> Moderada
+                    &emsp;<input type="radio" value="0" name="RESPOSTA16"> <i></i> Alta
+                </label>
+            </div>
+        </div>
+    </div>
+    <br />
+    <hr />
+    <div class="form-group">
+        <h3><b>Questão 17: </b> Quantidade de telas do sistema?</h3>
+        <div class="col-md-10">
+            <div class="radio i-checks">
+                <label>
+                    <input type="radio" value="10" name="RESPOSTA17" required> <i></i> Pouca
+                    &emsp;<input type="radio" value="5" name="RESPOSTA17"> <i></i> Moderada
+                    &emsp;<input type="radio" value="0" name="RESPOSTA17"> <i></i> Alta
+                </label>
+            </div>
+        </div>
+    </div>
+    <br />
+    <hr />
+    <div class="form-group">
+        <h3><b>Questão 18: </b>Volume de dados usados pelo sistema?</h3>
+        <div class="col-md-10">
+            <div class="radio i-checks">
+                <label>
+                    <input type="radio" value="10" name="RESPOSTA18" required> <i></i> Pequeno
+                    &emsp;<input type="radio" value="5" name="RESPOSTA18"> <i></i> Médio
+                    &emsp;<input type="radio" value="0" name="RESPOSTA18"> <i></i> Grande
+                </label>
+            </div>
+        </div>
+    </div>
+    <br />
+    <hr />
+    <div class="form-group">
+        <h3><b>Questão 19: </b> A taxa de disponibilidade do sistema é satisfatória?</h3>
+        <div class="col-md-10">
+            <div class="radio i-checks">
+                <label>
+                    <input type="radio" value="10" name="RESPOSTA19" required> <i></i> Sim
+                    &emsp;<input type="radio" value="0" name="RESPOSTA19"> <i></i> Não
+                </label>
+            </div>
+        </div>
+    </div>
+    <br />
+    <hr />
+    <div class="form-group">
+        <h3><b>Questão 20: </b>Qual o nível de customização?</h3>
+        <div class="col-md-10">
+            <div class="radio i-checks">
+                <label>
+                    <input type="radio" value="0" name="RESPOSTA20" required> <i></i> Pequeno
+                    &emsp;<input type="radio" value="5" name="RESPOSTA20"> <i></i> Médio
+                    &emsp;<input type="radio" value="10" name="RESPOSTA20"> <i></i> Grande
+                </label>
+            </div>
+        </div>
+    </div>
+    <br />
+    <div class="form-group">
+        <div class="hr-line-dashed"></div>
+        <div class="form-group">
+            <div class="col-sm-12 col-sm-offset-2">
+                @Html.ActionLink("Sair sem salvar", "../Avaliacaos/IndexUsuario", null, new { @class = "btn btn-white" })&emsp;
+                <button class="btn btn-success " type="submit" name="Submit" value="sair">Salvar e sair</button>&emsp;
+                <button class="btn btn-primary" type="submit" name="Submit" value="continuar">Salvar e continuar</button>
+            </div>
+        </div>
+        <br />
+        <br />
+        <br />
+        <br />
+    </div>
+</div>
+}
+
+@section Styles {
+    @Styles.Render("~/Content/plugins/iCheck/iCheckStyles")
+
+}
+
+@section Scripts {
+    @Scripts.Render("~/plugins/wizardSteps")
+    @Scripts.Render("~/plugins/iCheck")
+    @Scripts.Render("~/plugins/validate")
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+
+            $('.i-checks').iCheck({
+                checkboxClass: 'icheckbox_square-green',
+                radioClass: 'iradio_square-green',
+            });
+
+        });
+
+    </script>
+}
+
+
+

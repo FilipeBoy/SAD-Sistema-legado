@@ -1,0 +1,214 @@
+﻿@model Inspinia_MVC5.Models.Avaliacao
+@{
+    ViewBag.Title = "ViewComparacao";
+}
+
+<div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-sm-8">
+        <h2>Comparações</h2>
+        <p>As Comparações abaixo foram realizadas de acordo com os feedbacks das avaliações já realizadas, considerando o que realmente foi adotado como estratégia de evolução.</p>
+    </div>
+    <div class="col-sm-4">
+        <div class="title-action">
+            @Html.ActionLink("Voltar", "../Avaliacaos/ViewResultado", new { id = Model.ID_AVALIACAO }, htmlAttributes: new { @class = "btn btn-white" })
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-lg-6">
+        <div class="ibox float-e-margins">
+            <div class="ibox-content  text-center">
+                <h3>Avaliações com o mesmo resultado</h3>
+            </div>
+            <div class="ibox-content">
+                <div>
+                    <canvas id="barChart1" height="140"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-6">
+        <div class="ibox float-e-margins">
+            <div class="ibox-content  text-center">
+                <h3>Sistemas com a mesma linguagem</h3>
+            </div>
+            <div class="ibox-content">
+                <div>
+                    <canvas id="barChart2" height="140"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-lg-6">
+        <div class="ibox float-e-margins">
+            <div class="ibox-content  text-center">
+                <h3>Hardwares com a mesma idade</h3>
+            </div>
+            <div class="ibox-content">
+                <div>
+                    <canvas id="barChart3" height="140"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-6">
+        <div class="ibox float-e-margins">
+            <div class="ibox-content  text-center">
+                <h3>Softwares com a mesma idade</h3>
+            </div>
+            <div class="ibox-content">
+                <div>
+                    <canvas id="barChart4" height="140"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/plugins/chartjs")
+    <script type="text/javascript">
+        $.ajax({
+            type: "POST",
+            url: "/Avaliacaos/Grafico1BarComp",
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            success: function (mems) {
+                var aData = mems;
+                var aLabels = aData[0];
+                var aDatasets1 = aData[1];
+                var dataT = {
+                    labels: aLabels,
+                    datasets: [{
+                        label: 'Quantidade',
+                        data: aDatasets1,
+                        fill: false,
+                        backgroundColor: '#a3e1d4',
+                        pointBorderColor: "#fff"
+                    }]
+                };
+                var ctx = $("#barChart1").get(0).getContext("2d");
+                var myNewChart = new Chart(ctx, {
+                    type: 'bar',
+                    data: dataT,
+                    options: {
+                        responsive: true,
+                        legend: { position: 'bottom' },
+                        scales: {
+                            xAxes: [{ gridLines: { display: false }, display: true, scaleLabel: { display: false, labelString: '' } }],
+                            yAxes: [{ gridLines: { display: false }, display: true, scaleLabel: { display: false, labelString: '' }, ticks: { stepSize: aData[1], beginAtZero: true } }]
+                        },
+                    }
+                });
+
+            }
+        });
+        $.ajax({
+            type: "POST",
+            url: "/Avaliacaos/Grafico2BarComp",
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            success: function (mems) {
+                var aData = mems;
+                var aLabels = aData[0];
+                var aDatasets1 = aData[1];
+                var dataT = {
+                    labels: aLabels,
+                    datasets: [{
+                        label: 'Quantidade',
+                        data: aDatasets1,
+                        fill: false,
+                        backgroundColor: '#a3e1d4',
+                        pointBorderColor: "#fff"
+                    }]
+                };
+                var ctx = $("#barChart2").get(0).getContext("2d");
+                var myNewChart = new Chart(ctx, {
+                    type: 'bar',
+                    data: dataT,
+                    options: {
+                        responsive: true,
+                        legend: { position: 'bottom' },
+                        scales: {
+                            xAxes: [{ gridLines: { display: false }, display: true, scaleLabel: { display: false, labelString: '' } }],
+                            yAxes: [{ gridLines: { display: false }, display: true, scaleLabel: { display: false, labelString: '' }, ticks: { stepSize: aData[1], beginAtZero: true } }]
+                        },
+                    }
+                });
+
+            }
+        });
+        $.ajax({
+            type: "POST",
+            url: "/Avaliacaos/Grafico3BarComp",
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            success: function (mems) {
+                var aData = mems;
+                var aLabels = aData[0];
+                var aDatasets1 = aData[1];
+                var dataT = {
+                    labels: aLabels,
+                    datasets: [{
+                        label: 'Quantidade',
+                        data: aDatasets1,
+                        fill: false,
+                        backgroundColor: '#a3e1d4',
+                        pointBorderColor: "#fff"
+                    }]
+                };
+                var ctx = $("#barChart3").get(0).getContext("2d");
+                var myNewChart = new Chart(ctx, {
+                    type: 'bar',
+                    data: dataT,
+                    options: {
+                        responsive: true,
+                        legend: { position: 'bottom' },
+                        scales: {
+                            xAxes: [{ gridLines: { display: false }, display: true, scaleLabel: { display: false, labelString: '' } }],
+                            yAxes: [{ gridLines: { display: false }, display: true, scaleLabel: { display: false, labelString: '' }, ticks: { stepSize: aData[1], beginAtZero: true } }]
+                        },
+                    }
+                });
+
+            }
+        });
+        $.ajax({
+            type: "POST",
+            url: "/Avaliacaos/Grafico4BarComp",
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            success: function (mems) {
+                var aData = mems;
+                var aLabels = aData[0];
+                var aDatasets1 = aData[1];
+                var dataT = {
+                    labels: aLabels,
+                    datasets: [{
+                        label: 'Quantidade',
+                        data: aDatasets1,
+                        fill: false,
+                        backgroundColor: '#a3e1d4',
+                        pointBorderColor: "#fff"
+                    }]
+                };
+                var ctx = $("#barChart4").get(0).getContext("2d");
+                var myNewChart = new Chart(ctx, {
+                    type: 'bar',
+                    data: dataT,
+                    options: {
+                        responsive: true,
+                        legend: { position: 'bottom' },
+                        scales: {
+                            xAxes: [{ gridLines: { display: false }, display: true, scaleLabel: { display: false, labelString: '' } }],
+                            yAxes: [{ gridLines: { display: false }, display: true, scaleLabel: { display: false, labelString: '' }, ticks: { stepSize: aData[1], beginAtZero: true } }]
+                        },
+                    }
+                });
+
+            }
+        });
+    </script>
+}

@@ -1,0 +1,45 @@
+﻿@model Inspinia_MVC5.Models.MailModel
+@{
+    ViewBag.Title = "Contato";
+}
+<div class="wrapper wrapper-content">
+    <div class="row">
+        <div class="col-lg-12 animated fadeInRight">
+            <div class="mail-box-header">
+                <h2>
+                    Contato
+                </h2>
+            </div>
+            <div class="mail-box">
+                <div class="mail-body">
+                    @if (TempData["Mensagem"] != null)
+                    {
+                        <h4 style="color:red">&emsp;@TempData["Mensagem"]</h4>
+                    }
+                    @using (Html.BeginForm())
+                    {
+                        @Html.ValidationSummary()
+                        <div class="form-horizontal">
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">Título</label>
+                                <div class="col-sm-10"><input type="text" class="form-control" value="" name="Subject"></div>
+                                <br />
+                                <br />
+                            </div>
+                            <div class="mail-text h-300">
+                                <br />
+                                <br />
+                                <label class="col-sm-2 control-label">Mensagem</label>
+                                <textarea class="col-sm-10" name="Body" rows="10" cols="70" placeholder="Escreva sua mensagem..."></textarea>
+                            </div>
+                            <div class="mail-body text-right tooltip-demo">
+                                <button class="btn btn-sm btn-primary" type="submit"><i class="fa fa-reply"></i> Enviar</button>&emsp;
+                                @Html.ActionLink("Descartar", "../Home/Inicio", null, new { @class = "btn btn-danger btn-sm" })
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

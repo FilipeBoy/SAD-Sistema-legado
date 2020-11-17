@@ -1,0 +1,72 @@
+﻿@model Inspinia_MVC5.Models.Usuario
+
+
+@{
+    ViewBag.Title = "Details";
+
+}
+
+<div class="row wrapper border-bottom white-bg page-heading">
+    <div class="row">
+        <h2>&emsp;Informações da conta</h2>
+        @if (ViewData["Mensagem"] != null)
+        {
+        <h4 class="text-danger">&emsp;@ViewData["Mensagem"]</h4>
+        }
+    </div>
+</div>
+<div class="wrapper wrapper-content fadeInRight w3-center">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="ibox float-e-margins">
+                <div class="ibox-content">
+                    <div>
+                        <b>@Html.DisplayNameFor(model => model.TIPO_CONTA) : </b>@Html.DisplayFor(model => model.TIPO_CONTA)
+                    </div>
+                    <br />
+                    <div>
+                        <b> @Html.DisplayNameFor(model => model.NOME) : </b>@Html.DisplayFor(model => model.NOME)
+                    </div>
+                    <br />
+                    <div>
+                        <b>@Html.DisplayNameFor(model => model.SOBRENOME) : </b>@Html.DisplayFor(model => model.SOBRENOME)
+                    </div>
+                    <br />
+                    <div>
+                        <b> @Html.DisplayNameFor(model => model.EMAIL) :</b> @Html.DisplayFor(model => model.EMAIL)
+                    </div>
+                    <br />
+                    <div>
+                        <b> @Html.DisplayNameFor(model => model.SENHA) :</b> ********************
+                    </div>
+                    <br />
+                    <div>
+                        <b> @Html.DisplayNameFor(model => model.CONFSENHA) :</b> ********************
+                    </div>
+                    <br />
+                    <br />
+                    @Html.ActionLink("Editar", "Edit", new { id = Model.ID_USUARIO }, new { @class = "btn btn-primary" })&emsp;
+                    @Html.ActionLink("Voltar", "../Home/Inicio", null, new { @class = "btn btn-white" })
+               </div>
+            </div>
+        </div>
+    </div>
+</div>
+@Html.ActionLink("Excluir conta", "Delete", new { id = Model.ID_USUARIO }, new { @class = "btn btn-primary w3-right" })
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

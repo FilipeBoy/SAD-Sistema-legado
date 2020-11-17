@@ -1,0 +1,216 @@
+﻿@model Inspinia_MVC5.Models.Feedback
+
+@{
+    ViewBag.Title = "DetailsComplementar";
+
+}
+
+<div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-sm-12">
+        <h2>Feedback Complementar</h2>
+    </div>
+</div>
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+<div class="ibox-content">
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    @Html.HiddenFor(model => model.ID_AVALIACAO)
+    @Html.HiddenFor(model => model.ID_FEEDBACK)
+    <div class="form-group">
+        <h3>Não concordou com alguma das notas?</h3>
+        <div class="col-md-12">
+            <div class="radio i-checks">
+                <label>
+                    @if (Model.RESPOSTA1 == 0)
+                    {
+                    <label>
+                        <input type="radio" value="1" name="RESPOSTA1"> <i></i> Sim
+                        &emsp;&emsp;<input type="radio" value="0" name="RESPOSTA1" checked> <i></i> Não
+                    </label>
+                    }
+                    else if (Model.RESPOSTA1 == 1)
+                    {
+                        <label>
+                            <input type="radio" value="1" name="RESPOSTA1" checked> <i></i> Sim
+                            &emsp;&emsp;<input type="radio" value="0" name="RESPOSTA1"> <i></i> Não
+                        </label>
+                    }
+                    else
+                    {
+                        <label>
+                            <input type="radio" value="1" name="RESPOSTA1"> <i></i> Sim
+                            &emsp;&emsp;<input type="radio" value="0" name="RESPOSTA1"> <i></i> Não
+                        </label>
+                    }
+
+                </label>
+            </div>
+            <h3>Caso sim, qual?</h3>
+            @Html.DisplayFor(model => model.RESPOSTA2, new { htmlAttributes = new { @class = "form-control" } })
+        </div>
+    </div>
+    <div class="col-md-12">
+        <br />
+        <br />
+    </div>
+    <hr />
+    <div class="form-group">
+        <h3>Não concordou com alguma pergunta?</h3>
+        <div class="col-md-12">
+            <div class="radio i-checks">
+                <label>
+
+                    @if (Model.RESPOSTA3 == 0)
+                    {
+                    <label>
+                        <input type="radio" value="1" name="RESPOSTA3"> <i></i> Sim
+                        &emsp;&emsp;<input type="radio" value="0" name="RESPOSTA3" checked> <i></i> Não
+                    </label>
+                    }
+                    else if (Model.RESPOSTA3 == 1)
+                    {
+                        <label>
+                            <input type="radio" value="1" name="RESPOSTA3" checked> <i></i> Sim
+                            &emsp;&emsp;<input type="radio" value="0" name="RESPOSTA3"> <i></i> Não
+                        </label>
+                    }
+                    else
+                    {
+                        <label>
+                            <input type="radio" value="1" name="RESPOSTA3"> <i></i> Sim
+                            &emsp;&emsp;<input type="radio" value="0" name="RESPOSTA3"> <i></i> Não
+                        </label>
+                    }
+                </label>
+            </div>
+            <h3>Caso sim, qual e porque?</h3>
+            <textarea name="RESPOSTA4" rows="10" cols="70" disabled>@Model.RESPOSTA4</textarea>
+        </div>
+    </div>
+    <div class="col-md-12">
+        <br />
+        <br />
+    </div>
+    <hr />
+    <div class="form-group">
+        <h3>Faltou alguma pergunta?</h3>
+        <div class="col-md-12">
+            <div class="radio i-checks">
+                <label>
+                    @if (Model.RESPOSTA5 == 0)
+                    {
+                    <label>
+                        <input type="radio" value="1" name="RESPOSTA5"> <i></i> Sim
+                        &emsp;&emsp;<input type="radio" value="0" name="RESPOSTA5" checked> <i></i> Não
+                    </label>
+                    }
+                    else if (Model.RESPOSTA5 == 1)
+                    {
+                        <label>
+                            <input type="radio" value="1" name="RESPOSTA5" checked> <i></i> Sim
+                            &emsp;&emsp;<input type="radio" value="0" name="RESPOSTA5"> <i></i> Não
+                        </label>
+                    }
+                    else
+                    {
+                        <label>
+                            <input type="radio" value="1" name="RESPOSTA5"> <i></i> Sim
+                            &emsp;&emsp;<input type="radio" value="0" name="RESPOSTA5"> <i></i> Não
+                        </label>
+                    }
+                </label>
+            </div>
+            <h3>Caso sim, qual e em que aspecto (negócio,técnico ou ambiente)?</h3>
+            <textarea name="RESPOSTA6" rows="10" cols="70" disabled>@Model.RESPOSTA6</textarea>
+        </div>
+    </div>
+    <div class="col-md-12">
+        <br />
+        <br />
+    </div>
+    <hr />
+    <div class="form-group">
+        <h3>Em qual nível a decisão foi tomada?</h3>
+        <div class="col-md-12">
+            <div class="radio i-checks">
+               
+                @if (Model.RESPOSTA7 == 0)
+                {
+                <label>
+                    <input type="radio" value="0" name="RESPOSTA7" checked> <i></i> Tático
+                    &emsp;&emsp;<input type="radio" value="1" name="RESPOSTA7"> <i></i> Executivo
+                    &emsp;&emsp;<input type="radio" value="2" name="RESPOSTA7"> <i></i> Ambos
+                </label>
+                }
+                else if (Model.RESPOSTA7 == 1)
+                {
+                    <label>
+                        <input type="radio" value="0" name="RESPOSTA7"> <i></i> Tático
+                        &emsp;&emsp;<input type="radio" value="1" name="RESPOSTA7" checked> <i></i> Executivo
+                        &emsp;&emsp;<input type="radio" value="2" name="RESPOSTA7"> <i></i> Ambos
+                    </label>
+                }
+                else if (Model.RESPOSTA7 == 2)
+                {
+                    <label>
+                        <input type="radio" value="0" name="RESPOSTA7"> <i></i> Tático
+                        &emsp;&emsp;<input type="radio" value="1" name="RESPOSTA7"> <i></i> Executivo
+                        &emsp;&emsp;<input type="radio" value="2" name="RESPOSTA7" checked> <i></i> Ambos
+                    </label>
+                }
+                else
+                {
+                    <label>
+                        <input type="radio" value="0" name="RESPOSTA7"> <i></i> Tático
+                        &emsp;&emsp;<input type="radio" value="1" name="RESPOSTA7"> <i></i> Executivo
+                        &emsp;&emsp;<input type="radio" value="2" name="RESPOSTA7"> <i></i> Ambos
+                    </label>
+                }
+            </div>
+        </div>
+    </div>
+
+    <br />
+    <hr />
+    @if (Session["Papel"].ToString().Equals("Admin"))
+    {
+        @Html.ActionLink("Voltar", "../Feedbacks/Index", null, new { @class = "btn btn-white" })
+    }
+    else
+    {
+        @Html.ActionLink("Editar", "EditComplementar", new { id = Model.ID_FEEDBACK }, new { @class = "btn btn-primary" })<span>&emsp;</span>
+        @Html.ActionLink("Voltar", "../Avaliacaos/IndexUsuario", null, new { @class = "btn btn-white" })
+    }
+    <br />
+    <br />
+    <br />
+    <br />
+</div>
+    
+}
+
+@section Styles {
+    @Styles.Render("~/Content/plugins/iCheck/iCheckStyles")
+}
+
+@section Scripts {
+    @Scripts.Render("~/plugins/wizardSteps")
+    @Scripts.Render("~/plugins/iCheck")
+    @Scripts.Render("~/plugins/validate")
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('.i-checks').iCheck({
+                checkboxClass: 'icheckbox_square-green',
+                radioClass: 'iradio_square-green',
+            });
+        });
+    </script>
+}
+
+
+
+
+
+
+

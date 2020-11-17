@@ -1,0 +1,446 @@
+﻿@model Inspinia_MVC5.Models.Negocio
+
+@{
+    ViewBag.Title = "Edit";
+
+}
+
+<div class="row wrapper border-bottom white-bg page-heading">
+    <ul class="progress-indicator">
+        <li class="completed"> <span class="bubble"></span> Importância para o negócio </li>
+        <li> <span class="bubble"></span> Qualidade Técnica </li>
+        <li> <span class="bubble"></span> Qualidade do Ambiente </li>
+    </ul>
+</div>
+<div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-sm-12 text-center">
+        <h2>Avaliação da importância do sistema para o negócio</h2>
+    </div>
+</div>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <div class="ibox-content">
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.ID_AVALIACAO)
+        @Html.HiddenFor(model => model.ID_AVNEGOCIO)
+        <div class="form-group">
+            <h3><b>Questão 1: </b>Quantos anos de funcionamento a empresa possui?</h3>
+            <div class="col-md-10">
+                <div class="radio i-checks">
+                    @if (Model.RESPOSTA1 == 0)
+                    {
+                        <label>
+                            <input type="radio" value="0" name="RESPOSTA1" checked> <i></i> 0 a 9
+                            &emsp;<input type="radio" value="5" name="RESPOSTA1"> <i></i> 10 a 19
+                            &emsp;<input type="radio" value="10" name="RESPOSTA1"> <i></i> Mais de 20
+                        </label>
+                    }
+                    else if (Model.RESPOSTA1 == 5)
+                    {
+                        <label>
+                            <input type="radio" value="0" name="RESPOSTA1"> <i></i> 0 a 9
+                            &emsp;<input type="radio" value="5" name="RESPOSTA1" checked> <i></i> 10 a 19
+                            &emsp;<input type="radio" value="10" name="RESPOSTA1"> <i></i> Mais de 20
+                        </label>
+                    }
+                    else if (Model.RESPOSTA1 == 10)
+                    {
+                        <label>
+                            <input type="radio" value="0" name="RESPOSTA1"> <i></i> 0 a 9
+                            &emsp;<input type="radio" value="5" name="RESPOSTA1"> <i></i> 10 a 19
+                            &emsp;<input type="radio" value="10" name="RESPOSTA1" checked> <i></i> Mais de 20
+                        </label>
+                    }
+                </div>
+            </div>
+        </div>
+        <br />
+        <hr />
+        <div class="form-group">
+            <h3><b>Questão 2: </b>Quantos funcionarios a empresa possui?</h3>
+            <div class="col-md-10">
+                <div class="radio i-checks">
+                    @if (Model.RESPOSTA2 == 0)
+                    {
+                        <label>
+                            <input type="radio" value="0" name="RESPOSTA2" checked> <i></i> 0 a 99
+                            &emsp;<input type="radio" value="5" name="RESPOSTA2"> <i></i> 100 a 499
+                            &emsp;<input type="radio" value="10" name="RESPOSTA2"> <i></i> Mais que 500
+                        </label>
+                    }
+                    else if (Model.RESPOSTA2 == 5)
+                    {
+                        <label>
+                            <input type="radio" value="0" name="RESPOSTA2" > <i></i> 0 a 99
+                            &emsp;<input type="radio" value="5" name="RESPOSTA2" checked> <i></i> 100 a 499
+                            &emsp;<input type="radio" value="10" name="RESPOSTA2"> <i></i> Mais que 500
+                        </label>
+                    }
+                    else if (Model.RESPOSTA2 == 10)
+                    {
+                        <label>
+                            <input type="radio" value="0" name="RESPOSTA2"> <i></i> 0 a 99
+                            &emsp;<input type="radio" value="5" name="RESPOSTA2"> <i></i> 100 a 499
+                            &emsp;<input type="radio" value="10" name="RESPOSTA2" checked> <i></i> Mais que 500
+                        </label>
+                    }
+                </div>
+            </div>
+        </div>
+        <br />
+        <hr />
+        <div class="form-group">
+            <h3><b>Questão 3: </b> Qual o faturamento anual da empresa?</h3>
+            <div class="col-md-10">
+                <div class="radio i-checks">
+                    @if (Model.RESPOSTA3 == 0)
+                    {
+                        <label>
+                            <input type="radio" value="0" name="RESPOSTA3" checked> <i></i> Menos que R$2,4 milhões
+                            &emsp;<input type="radio" value="2,5" name="RESPOSTA3"> <i></i> R$2,4 a R$16 milhões
+                            &emsp;<input type="radio" value="5" name="RESPOSTA3"> <i></i> R$16 a R$90 milhões
+                            <br /><br /><input type="radio" value="7,5" name="RESPOSTA3"> <i></i> R$90 a R$300 milhões
+                            &emsp;<input type="radio" value="10" name="RESPOSTA3"> <i></i> Mais que R$300 milhões
+                        </label>
+                    }
+                    else if (Model.RESPOSTA3 == 2.5)
+                    {
+                        <label>
+                            <input type="radio" value="0" name="RESPOSTA3"> <i></i> Menos que R$2,4 milhões
+                            &emsp;<input type="radio" value="2,5" name="RESPOSTA3" checked> <i></i> R$2,4 a R$16 milhões
+                            &emsp;<input type="radio" value="5" name="RESPOSTA3"> <i></i> R$16 a R$90 milhões
+                            <br /><br /><input type="radio" value="7,5" name="RESPOSTA3"> <i></i> R$90 a R$300 milhões
+                            &emsp;<input type="radio" value="10" name="RESPOSTA3"> <i></i> Mais que R$300 milhões
+                        </label>
+                    }
+                    else if (Model.RESPOSTA3 == 5)
+                    {
+                        <label>
+                            <input type="radio" value="0" name="RESPOSTA3" > <i></i> Menos que R$2,4 milhões
+                            &emsp;<input type="radio" value="2,5" name="RESPOSTA3"> <i></i> R$2,4 a R$16 milhões
+                            &emsp;<input type="radio" value="5" name="RESPOSTA3" checked> <i></i> R$16 a R$90 milhões
+                            <br /><br /><input type="radio" value="7,5" name="RESPOSTA3"> <i></i> R$90 a R$300 milhões
+                            &emsp;<input type="radio" value="10" name="RESPOSTA3"> <i></i> Mais que R$300 milhões
+                        </label>
+                    }
+                    else if (Model.RESPOSTA3 == 7.5)
+                    {
+                        <label>
+                            <input type="radio" value="0" name="RESPOSTA3" > <i></i> Menos que R$2,4 milhões
+                            &emsp;<input type="radio" value="2,5" name="RESPOSTA3"> <i></i> R$2,4 a R$16 milhões
+                            &emsp;<input type="radio" value="5" name="RESPOSTA3"> <i></i> R$16 a R$90 milhões
+                            <br /><br /><input type="radio" value="7,5" name="RESPOSTA3" checked> <i></i> R$90 a R$300 milhões
+                            &emsp;<input type="radio" value="10" name="RESPOSTA3"> <i></i> Mais que R$300 milhões
+                        </label>
+                    }
+                    else if (Model.RESPOSTA3 == 10)
+                    {
+                        <label>
+                            <input type="radio" value="0" name="RESPOSTA3" > <i></i> Menos que R$2,4 milhões
+                            &emsp;<input type="radio" value="2,5" name="RESPOSTA3"> <i></i> R$2,4 a R$16 milhões
+                            &emsp;<input type="radio" value="5" name="RESPOSTA3"> <i></i> R$16 a R$90 milhões
+                            <br /><br /><input type="radio" value="7,5" name="RESPOSTA3"> <i></i> R$90 a R$300 milhões
+                            &emsp;<input type="radio" value="10" name="RESPOSTA3" checked> <i></i> Mais que R$300 milhões
+                        </label>
+                    }
+                </div>
+            </div>
+        </div>
+        <br />
+        <br />
+        <br />
+        <br />
+        <hr />
+        <div class="form-group">
+            <h3><b>Questão 4: </b>Qual a frequência de utilização do sistema?</h3>
+            <div class="col-md-10">
+                <div class="radio i-checks">
+                    @if (Model.RESPOSTA4 == 0)
+                    {
+                        <label>
+                            <input type="radio" value="0" name="RESPOSTA4" checked> <i></i> Poucas vezes
+                            &emsp;<input type="radio" value="5" name="RESPOSTA4"> <i></i> As vezes
+                            &emsp;<input type="radio" value="10" name="RESPOSTA4"> <i></i> Muitas vezes
+                        </label>
+                    }
+                    else if (Model.RESPOSTA4 == 5)
+                    {
+                        <label>
+                            <input type="radio" value="0" name="RESPOSTA4"> <i></i> Poucas vezes
+                            &emsp;<input type="radio" value="5" name="RESPOSTA4" checked> <i></i> As vezes
+                            &emsp;<input type="radio" value="10" name="RESPOSTA4"> <i></i> Muitas vezes
+                        </label>
+                    }
+                    else if (Model.RESPOSTA4 == 10)
+                    {
+                        <label>
+                            <input type="radio" value="0" name="RESPOSTA4"> <i></i> Poucas vezes
+                            &emsp;<input type="radio" value="5" name="RESPOSTA4"> <i></i> As vezes
+                            &emsp;<input type="radio" value="10" name="RESPOSTA4" checked> <i></i> Muitas vezes
+                        </label>
+                    }
+                </div>
+            </div>
+        </div>
+        <br />
+        <hr />
+        <div class="form-group">
+            <h3><b>Questão 5: </b> Qual a quantidade de pessoas que utilizam?</h3>
+            <div class="col-md-10">
+                <div class="radio i-checks">
+                    @if (Model.RESPOSTA5 == 0)
+                    {
+                        <label>
+                            <input type="radio" value="0" name="RESPOSTA5" checked> <i></i> Poucas
+                            &emsp;<input type="radio" value="5" name="RESPOSTA5"> <i></i> Algumas
+                            &emsp;<input type="radio" value="10" name="RESPOSTA5"> <i></i> Muitas
+                        </label>
+                    }
+                    else if (Model.RESPOSTA5 == 5)
+                    {
+                        <label>
+                            <input type="radio" value="0" name="RESPOSTA5"> <i></i> Poucas
+                            &emsp;<input type="radio" value="5" name="RESPOSTA5" checked> <i></i> Algumas
+                            &emsp;<input type="radio" value="10" name="RESPOSTA5"> <i></i> Muitas
+                        </label>
+                    }
+                    else if (Model.RESPOSTA5 == 10)
+                    {
+                        <label>
+                            <input type="radio" value="0" name="RESPOSTA5" > <i></i> Poucas
+                            &emsp;<input type="radio" value="5" name="RESPOSTA5"> <i></i> Algumas
+                            &emsp;<input type="radio" value="10" name="RESPOSTA5" checked> <i></i> Muitas
+                        </label>
+                    }
+                </div>
+            </div>
+        </div>
+        <br />
+        <hr />
+        <div class="form-group">
+            <h3><b>Questão 6: </b>O sistema apoia processos de negócios eficientes e importantes?</h3>
+            <div class="col-md-10">
+                <div class="radio i-checks">
+                    @if (Model.RESPOSTA6 == 10)
+                    {
+                        <label>
+                            <input type="radio" value="10" name="RESPOSTA6"checked> <i></i> Sim
+                            &emsp;<input type="radio" value="0" name="RESPOSTA6"> <i></i> Não
+                        </label>
+                    }
+                    else
+                    {
+                        <label>
+                            <input type="radio" value="10" name="RESPOSTA6"> <i></i> Sim
+                            &emsp;<input type="radio" value="0" name="RESPOSTA6" checked> <i></i> Não
+                        </label>
+                    }
+
+                </div>
+            </div>
+        </div>
+        <br />
+        <hr />
+        <div class="form-group">
+            <h3><b>Questão 7: </b>O sistema gera algum tipo de problema no qual é necessário uma pessoa desviar-se de suas tarefas para resolver o problema?</h3>
+            <div class="col-md-10">
+                <div class="radio i-checks">
+                    @if (Model.RESPOSTA7 == 0)
+                    {
+                        <label>
+                            <input type="radio" value="0" name="RESPOSTA7"checked> <i></i> Sim
+                            &emsp;<input type="radio" value="10" name="RESPOSTA7"> <i></i> Não
+                        </label>
+                    }
+                    else
+                    {
+                        <label>
+                            <input type="radio" value="0" name="RESPOSTA7"> <i></i> Sim
+                            &emsp;<input type="radio" value="10" name="RESPOSTA7" checked> <i></i> Não
+                        </label>
+                    }
+
+                </div>
+            </div>
+        </div>
+        <br />
+        <hr />
+        <div class="form-group">
+            <h3><b>Questão 8: </b>Qual o nível de confiança dos usuários no sistema?</h3>
+            <div class="col-md-10">
+                <div class="radio i-checks">
+                    @if (Model.RESPOSTA8 == 0)
+                    {
+                        <label>
+                            <input type="radio" value="0" name="RESPOSTA8"checked> <i></i> Baixo
+                            &emsp;<input type="radio" value="5" name="RESPOSTA8"> <i></i> Médio
+                            &emsp;<input type="radio" value="10" name="RESPOSTA8"> <i></i> Alto
+                        </label>
+                    }
+                    else if (Model.RESPOSTA8 == 5)
+                    {
+                        <label>
+                            <input type="radio" value="0" name="RESPOSTA8"> <i></i> Baixo
+                            &emsp;<input type="radio" value="5" name="RESPOSTA8" checked> <i></i> Médio
+                            &emsp;<input type="radio" value="10" name="RESPOSTA8"> <i></i> Alto
+                        </label>
+                    }
+                    else if (Model.RESPOSTA8 == 10)
+                    {
+                        <label>
+                            <input type="radio" value="0" name="RESPOSTA8" > <i></i> Baixo
+                            &emsp;<input type="radio" value="5" name="RESPOSTA8"> <i></i> Médio
+                            &emsp;<input type="radio" value="10" name="RESPOSTA8" checked> <i></i> Alto
+                        </label>
+                    }
+
+                </div>
+            </div>
+        </div>
+        <br />
+        <hr />
+        <div class="form-group">
+            <h3><b>Questão 9: </b>As saídas geradas pelo sistema realmente são úteis para o funcionamento do negócio?</h3>
+            <div class="col-md-10">
+                <div class="radio i-checks">
+                    @if (Model.RESPOSTA9 == 0)
+                    {
+                        <label>
+                            <input type="radio" value="10" name="RESPOSTA9"> <i></i> Sim
+                            &emsp;<input type="radio" value="0" name="RESPOSTA9" checked> <i></i> Não
+                        </label>
+                    }
+                    else
+                    {
+                        <label>
+                            <input type="radio" value="10" name="RESPOSTA9" checked> <i></i> Sim
+                            &emsp;<input type="radio" value="0" name="RESPOSTA9"> <i></i> Não
+                        </label>
+                    }
+
+                </div>
+            </div>
+        </div>
+        <br />
+        <hr />
+        <div class="form-group">
+            <h3><b>Questão 10: </b>Qual o custo para manter o sistema?</h3>
+            <div class="col-md-10">
+                <div class="radio i-checks">
+                    @if (Model.RESPOSTA10 == 0)
+                    {
+                        <label>
+                            <input type="radio" value="10" name="RESPOSTA10" > <i></i> Baixo
+                            &emsp;<input type="radio" value="5" name="RESPOSTA10"> <i></i> Médio
+                            &emsp;<input type="radio" value="0" name="RESPOSTA10"checked> <i></i> Alto
+                        </label>
+                    }
+                    else if (Model.RESPOSTA10 == 5)
+                    {
+                        <label>
+                            <input type="radio" value="10" name="RESPOSTA10"> <i></i> Baixo
+                            &emsp;<input type="radio" value="5" name="RESPOSTA10" checked> <i></i> Médio
+                            &emsp;<input type="radio" value="0" name="RESPOSTA10"> <i></i> Alto
+                        </label>
+                    }
+                    else if (Model.RESPOSTA10 == 10)
+                    {
+                        <label>
+                            <input type="radio" value="10" name="RESPOSTA10" checked> <i></i> Baixo
+                            &emsp;<input type="radio" value="5" name="RESPOSTA10"> <i></i> Médio
+                            &emsp;<input type="radio" value="0" name="RESPOSTA10"> <i></i> Alto
+                        </label>
+                    }
+
+                </div>
+            </div>
+        </div>
+        <br />
+        <hr />
+        <div class="form-group">
+            <h3><b>Questão 11: </b> Existe algum outro sistema dentro da empresa que tenha as mesmas funções?</h3>
+            <div class="col-md-10">
+                <div class="radio i-checks">
+                    @if (Model.RESPOSTA11 == 0)
+                    {
+                        <label>
+                            <input type="radio" value="0" name="RESPOSTA11" checked> <i></i> Sim
+                            &emsp;<input type="radio" value="10" name="RESPOSTA11"> <i></i> Não
+                        </label>
+                    }
+                    else
+                    {
+                        <label>
+                            <input type="radio" value="0" name="RESPOSTA11"> <i></i> Sim
+                            &emsp;<input type="radio" value="10" name="RESPOSTA11" checked> <i></i> Não
+                        </label>
+                    }
+
+                </div>
+            </div>
+        </div>
+        <br />
+        <hr />
+        <div class="form-group">
+            <h3><b>Questão 12: </b>O sistema possui tecnologia necessária para as futuras necessidades do negócio?</h3>
+            <div class="col-md-10">
+                <div class="radio i-checks">
+                    @if (Model.RESPOSTA12 == 0)
+                    {
+                        <label>
+                            <input type="radio" value="10" name="RESPOSTA12"> <i></i> Sim
+                            &emsp;<input type="radio" value="0" name="RESPOSTA12" checked> <i></i> Não
+                        </label>
+                    }
+                    else
+                    {
+                        <label>
+                            <input type="radio" value="10" name="RESPOSTA12" checked> <i></i> Sim
+                            &emsp;<input type="radio" value="0" name="RESPOSTA12"> <i></i> Não
+                        </label>
+                    }
+
+                </div>
+            </div>
+        </div>
+        <br />
+        <div class="form-group">
+            <div class="hr-line-dashed"></div>
+            <div class="form-group">
+                <div class="col-sm-12 col-sm-offset-2">
+                    @Html.ActionLink("Sair", "../Avaliacaos/IndexUsuario", null, new { @class = "btn btn-white" })&emsp;
+                    @Html.ActionLink("Próximo", "../Tecnicoes/Edit", new { id = Model.ID_AVALIACAO }, new { @class = "btn btn-primary" })&emsp;
+                    <button class="btn btn-success " type="submit" name="Submit" value="sair">Alterar e ver resultado</button>&emsp;
+                    <button class="btn btn-primary" type="submit" name="Submit" value="continuar">Alterar e próximo</button>
+                </div>
+            </div>
+            <br />
+            <br />
+            <br />
+            <br />
+        </div>
+    </div>
+}
+@section Styles {
+    @Styles.Render("~/Content/plugins/iCheck/iCheckStyles")
+}
+
+@section Scripts {
+    @Scripts.Render("~/plugins/wizardSteps")
+    @Scripts.Render("~/plugins/iCheck")
+    @Scripts.Render("~/plugins/validate")
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('.i-checks').iCheck({
+                checkboxClass: 'icheckbox_square-green',
+                radioClass: 'iradio_square-green',
+            });
+        });
+    </script>
+}
+
+
+
+
